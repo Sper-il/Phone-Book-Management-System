@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   backend:
-    container_name: phonebook_backend
+    container_name: phonebook
     build: ./backend
     ports:
       - "8000:8000"
