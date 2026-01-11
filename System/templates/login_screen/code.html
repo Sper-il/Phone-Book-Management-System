@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | ContactHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#36635c",
+                        "background-light": "#fafaf9",
+                        "background-dark": "#21262c",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display min-h-screen flex flex-col">
+<!-- Top Navigation Bar (Simplified for Login) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-gray-200 dark:border-gray-800 bg-white dark:bg-background-dark px-6 md:px-10 py-3">
+<div class="flex items-center gap-4 text-[#131615] dark:text-white">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-[#131615] dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">ContactHub</h2>
+</div>
+<div class="flex items-center gap-3">
+    <span class="text-sm text-gray-500 hidden md:inline">Don't have an account?</span>
+    <a href="../registration_screen/code.html" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary/10 text-primary dark:bg-primary/20 dark:text-primary-light text-sm font-bold">
+        Sign up
+    </a>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex items-center justify-center p-4">
+<div class="w-full max-w-[440px] bg-white dark:bg-[#2c313a] rounded-xl shadow-[0px_4px_24px_rgba(0,0,0,0.06)] overflow-hidden border border-gray-100 dark:border-gray-800">
+<div class="px-8 pt-10 pb-4 text-center">
+<h1 class="text-[#131615] dark:text-white tracking-tight text-3xl font-bold leading-tight mb-2">Welcome Back</h1>
+<p class="text-[#6e7c7a] dark:text-gray-400 text-base font-normal">Log in to manage your professional contacts.</p>
+</div>
+<div class="px-8 py-6">
+<!-- Username Field -->
+<div class="flex flex-col gap-1 pb-5">
+<label class="flex flex-col">
+<p class="text-[#131615] dark:text-gray-200 text-sm font-semibold leading-normal pb-2">Username or Phone Number</p>
+<input class="form-input flex w-full rounded-lg text-[#131615] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#dfe2e2] dark:border-gray-700 bg-white dark:bg-[#21262c] focus:border-primary h-12 placeholder:text-[#6e7c7a] dark:placeholder:text-gray-500 px-4 text-base font-normal" placeholder="Enter your username or phone" type="text" value=""/>
+</label>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center pb-2">
+<p class="text-[#131615] dark:text-gray-200 text-sm font-semibold leading-normal">Password</p>
+<a class="text-sm font-medium text-primary hover:underline" href="#">Forgot password?</a>
+</div>
+<label class="flex w-full items-stretch rounded-lg group">
+<input class="form-input flex w-full min-w-0 flex-1 rounded-l-lg text-[#131615] dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-[#dfe2e2] dark:border-gray-700 bg-white dark:bg-[#21262c] focus:border-primary h-12 placeholder:text-[#6e7c7a] dark:placeholder:text-gray-500 px-4 border-r-0 text-base font-normal" placeholder="Enter your password" type="password" value=""/>
+<div class="text-[#6e7c7a] dark:text-gray-500 flex border border-[#dfe2e2] dark:border-gray-700 bg-white dark:bg-[#21262c] items-center justify-center px-3 rounded-r-lg border-l-0 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</div>
+</label>
+</div>
+<!-- Remember Me (Bonus context specific) -->
+<div class="flex items-center gap-2 py-6">
+<input class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="text-sm text-[#6e7c7a] dark:text-gray-400 font-medium cursor-pointer" for="remember">Stay logged in for 30 days</label>
+</div>
+<!-- Login Button -->
+<a href="../contact_list_dashboard_1/code.html" class="block w-full">
+    <button type="button" class="w-full bg-primary hover:bg-[#2a4e48] text-white h-12 rounded-lg font-bold text-base transition-all shadow-sm active:scale-[0.98]">
+        Log In
+    </button>
+</a>
+<!-- Alternative Login -->
+<div class="relative my-8">
+<div class="absolute inset-0 flex items-center">
+<div class="w-full border-t border-gray-100 dark:border-gray-800"></div>
+</div>
+<div class="relative flex justify-center text-xs uppercase">
+<span class="bg-white dark:bg-[#2c313a] px-2 text-gray-400 font-medium">Professional access</span>
+</div>
+</div>
+<!-- SSO Placeholder (Surprise choice for enterprise feel) -->
+<button class="w-full border border-[#dfe2e2] dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800 text-[#131615] dark:text-white h-12 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 transition-colors">
+<span class="material-symbols-outlined" style="font-size: 18px;">corporate_fare</span>
+                    Login with Single Sign-On
+                </button>
+</div>
+<div class="bg-gray-50 dark:bg-[#242930] px-8 py-5 border-t border-gray-100 dark:border-gray-800 text-center">
+<p class="text-sm text-[#6e7c7a] dark:text-gray-400">
+                    Trusted by over 10,000+ network managers worldwide.
+                </p>
+</div>
+</div>
+</main>
+<!-- Footer Information -->
+<footer class="py-8 px-4 text-center">
+<p class="text-xs text-[#6e7c7a] dark:text-gray-500 uppercase tracking-widest font-semibold mb-2">Secure Connection</p>
+<div class="flex justify-center gap-4 text-xs text-gray-400">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<span>•</span>
+<a class="hover:text-primary transition-colors" href="#">Support</a>
+</div>
+</footer>
+</body></html>

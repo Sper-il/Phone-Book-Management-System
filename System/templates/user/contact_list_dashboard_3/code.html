@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Management - Contacts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background": "#fcfcfc",
+                        "sidebar": "#f8f9fa",
+                        "border-color": "#eeeeee"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            @apply bg-background text-gray-800;
+        }
+        .sidebar-item {
+            @apply flex items-center gap-3 px-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors hover:bg-gray-200/50;
+        }
+        .sidebar-item.active {
+            @apply text-primary bg-primary/5;
+        }
+        .group-card {
+            @apply bg-white border border-border-color rounded-xl p-6 transition-all hover:shadow-sm hover:border-gray-300;
+        }
+        .icon-selector-btn {
+            @apply flex items-center justify-center w-10 h-10 rounded-lg border border-border-color text-gray-500 hover:border-primary hover:text-primary transition-all;
+        }
+        .icon-selector-btn.active {
+            @apply border-primary text-primary bg-primary/5;
+        }
+    </style>
+</head>
+<body class="antialiased overflow-hidden">
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-sidebar border-r border-border-color flex flex-col shrink-0">
+<div class="p-8">
+<h1 class="text-sm font-bold tracking-widest text-gray-400 uppercase">Contacts</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="sidebar-item" href="#">
+<span class="material-symbols-outlined text-xl">person</span>
+<span>All Contacts</span>
+</a>
+<div class="pt-2">
+<a class="sidebar-item active" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span>Group</span>
+</a>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 px-2">
+<img alt="Profile" class="size-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQScCWfGGuTg6A24flA8R8DM2cr6f7RjfmjuZebajyweprT5NmKoU0RtkuKK3SPHHCZCX5UKL9ujrqHIeoWcI-NyLyLGbjGaeQacV5GfFst4WZTUaiHXt8y0DHfBArarh3_OkhD-s9Nfnh3LiUKHMfn-jp5ca1GXp3tPnuq1gUUJ6jf0wDNua-RV1DHgrhgwqN0tpxe9FX9ciRG63yEnoy62e2YfBLbrsEhGSGkMbHgEhFlDD_HQqVVXnDo3_UfgKMNzzyJzV4lzo"/>
+<div class="overflow-hidden">
+<p class="text-xs font-semibold truncate text-gray-700">Alex Morgan</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-white overflow-hidden">
+<header class="px-10 py-6 border-b border-border-color">
+<div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+<h2 class="text-2xl font-bold text-gray-900">Groups</h2>
+<div class="flex items-center gap-3 shrink-0">
+<button class="bg-primary hover:bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all">
+<span class="material-symbols-outlined text-lg">add</span>
+                            Add New Group
+                        </button>
+</div>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto px-10 py-10">
+<div class="max-w-5xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="group-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
+<span class="material-symbols-outlined">work</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900">Work</h3>
+<p class="text-sm text-gray-500 mt-1">42 Contacts</p>
+</div>
+<div class="group-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-pink-50 text-pink-600 rounded-lg">
+<span class="material-symbols-outlined">favorite</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900">Family</h3>
+<p class="text-sm text-gray-500 mt-1">18 Contacts</p>
+</div>
+<div class="group-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-green-50 text-green-600 rounded-lg">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900">Friends</h3>
+<p class="text-sm text-gray-500 mt-1">36 Contacts</p>
+</div>
+<div class="group-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-purple-50 text-purple-600 rounded-lg">
+<span class="material-symbols-outlined">handshake</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900">Clients</h3>
+<p class="text-sm text-gray-500 mt-1">124 Contacts</p>
+</div>
+<div class="group-card">
+<div class="flex justify-between items-start mb-4">
+<div class="p-2 bg-orange-50 text-orange-600 rounded-lg">
+<span class="material-symbols-outlined">fitness_center</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
+<span class="material-symbols-outlined text-xl">edit</span>
+</button>
+<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
+<span class="material-symbols-outlined text-xl">delete</span>
+</button>
+</div>
+</div>
+<h3 class="text-lg font-semibold text-gray-900">Gym</h3>
+<p class="text-sm text-gray-500 mt-1">12 Contacts</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900/60 backdrop-blur-sm">
+<div class="bg-white w-full max-w-md rounded-2xl shadow-2xl overflow-hidden mx-4">
+<div class="px-8 pt-8 pb-4">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold text-gray-900">Add New Group</h2>
+<button class="text-gray-400 hover:text-gray-600 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<div class="space-y-6">
+<div>
+<label class="block text-sm font-semibold text-gray-700 mb-2" for="group-name">
+                            Group Name
+                        </label>
+<input class="w-full px-4 py-3 rounded-lg border border-border-color focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all placeholder:text-gray-400" id="group-name" placeholder="e.g., Marketing Team" type="text"/>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-700 mb-3">
+                            Select Icon
+                        </label>
+<div class="flex flex-wrap gap-3">
+<button class="icon-selector-btn active">
+<span class="material-symbols-outlined">group</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">work</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">person</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">handshake</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">star</span>
+</button>
+<button class="icon-selector-btn">
+<span class="material-symbols-outlined">rocket_launch</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="px-8 py-6 bg-gray-50 border-t border-border-color flex items-center justify-end gap-3 mt-4">
+    <a href="../contact_list_dashboard_2/code.html">
+        <button class="px-5 py-2.5 text-sm font-semibold text-gray-600 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-all">
+            Cancel
+        </button>
+    </a>
+    <a href="../contact_list_dashboard_2/code.html">
+        <button class="px-5 py-2.5 text-sm font-semibold text-white bg-primary hover:bg-blue-600 rounded-lg transition-all shadow-sm">
+            Create Group
+        </button>
+    </a>
+</div>
+</div>
+</div>
+
+</body></html>
