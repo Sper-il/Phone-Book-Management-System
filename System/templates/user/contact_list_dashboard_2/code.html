@@ -40,6 +40,16 @@
     </style>
 </head>
 <body class="antialiased">
+<header class="w-full bg-white/90 dark:bg-gray-900/70 backdrop-blur-sm shadow-sm px-4 py-3 flex items-center gap-4">
+  <a href="../index.html" class="text-sm font-semibold text-primary">&larr; Back</a>
+  <div class="text-sm text-gray-600">Group Management (Dashboard 2)</div>
+  <nav class="ml-auto flex gap-2">
+    <a href="../contact_list_dashboard_1/code.html" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">D1</a>
+    <a href="../add_contact_modal/code.html" class="px-3 py-1 bg-green-600 text-white rounded text-sm">Add</a>
+    <a href="../contact_list_dashboard_2/code.html" class="px-3 py-1 bg-purple-600 text-white rounded text-sm">Groups</a>
+    <a href="../contact_list_dashboard_3/code.html" class="px-3 py-1 bg-orange-600 text-white rounded text-sm">New Group</a>
+  </nav>
+</header>
 <div class="flex h-screen overflow-hidden">
 <aside class="w-64 bg-sidebar border-r border-border-color flex flex-col shrink-0">
 <div class="p-8">
@@ -81,108 +91,10 @@
 </header>
 <div class="flex-1 overflow-y-auto px-10 py-10">
 <div class="max-w-5xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-<div class="group-card">
-<div class="flex justify-between items-start mb-4">
-<div class="p-2 bg-blue-50 text-blue-600 rounded-lg">
-<span class="material-symbols-outlined">work</span>
-</div>
-<div class="flex items-center gap-1">
-<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
-<span class="material-symbols-outlined text-xl">visibility</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
-<span class="material-symbols-outlined text-xl">edit</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
-<span class="material-symbols-outlined text-xl">delete</span>
-</button>
-</div>
-</div>
-<h3 class="text-lg font-semibold text-gray-900">Work</h3>
-<p class="text-sm text-gray-500 mt-1">42 Contacts</p>
-</div>
-<div class="group-card">
-<div class="flex justify-between items-start mb-4">
-<div class="p-2 bg-pink-50 text-pink-600 rounded-lg">
-<span class="material-symbols-outlined">favorite</span>
-</div>
-<div class="flex items-center gap-1">
-<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
-<span class="material-symbols-outlined text-xl">visibility</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
-<span class="material-symbols-outlined text-xl">edit</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
-<span class="material-symbols-outlined text-xl">delete</span>
-</button>
-</div>
-</div>
-<h3 class="text-lg font-semibold text-gray-900">Family</h3>
-<p class="text-sm text-gray-500 mt-1">18 Contacts</p>
-</div>
-<div class="group-card">
-<div class="flex justify-between items-start mb-4">
-<div class="p-2 bg-green-50 text-green-600 rounded-lg">
-<span class="material-symbols-outlined">group</span>
-</div>
-<div class="flex items-center gap-1">
-<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
-<span class="material-symbols-outlined text-xl">visibility</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
-<span class="material-symbols-outlined text-xl">edit</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
-<span class="material-symbols-outlined text-xl">delete</span>
-</button>
-</div>
-</div>
-<h3 class="text-lg font-semibold text-gray-900">Friends</h3>
-<p class="text-sm text-gray-500 mt-1">36 Contacts</p>
-</div>
-<div class="group-card">
-<div class="flex justify-between items-start mb-4">
-<div class="p-2 bg-purple-50 text-purple-600 rounded-lg">
-<span class="material-symbols-outlined">handshake</span>
-</div>
-<div class="flex items-center gap-1">
-<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
-<span class="material-symbols-outlined text-xl">visibility</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
-<span class="material-symbols-outlined text-xl">edit</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
-<span class="material-symbols-outlined text-xl">delete</span>
-</button>
-</div>
-</div>
-<h3 class="text-lg font-semibold text-gray-900">Clients</h3>
-<p class="text-sm text-gray-500 mt-1">124 Contacts</p>
-</div>
-<div class="group-card">
-<div class="flex justify-between items-start mb-4">
-<div class="p-2 bg-orange-50 text-orange-600 rounded-lg">
-<span class="material-symbols-outlined">fitness_center</span>
-</div>
-<div class="flex items-center gap-1">
-<button class="p-2 text-gray-400 hover:text-primary transition-colors" title="View">
-<span class="material-symbols-outlined text-xl">visibility</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-gray-600 transition-colors" title="Edit">
-<span class="material-symbols-outlined text-xl">edit</span>
-</button>
-<button class="p-2 text-gray-400 hover:text-red-500 transition-colors" title="Delete">
-<span class="material-symbols-outlined text-xl">delete</span>
-</button>
-</div>
-</div>
-<h3 class="text-lg font-semibold text-gray-900">Gym</h3>
-<p class="text-sm text-gray-500 mt-1">12 Contacts</p>
-</div>
-</div>
+<div class="text-center py-16">
+        <p class="text-gray-600">Không có nhóm hiển thị ở đây.</p>
+        <p class="text-sm text-gray-400 mt-3">Nhấn "New Group" hoặc "Add" để tạo nhóm mới.</p>
+      </div>
 </div>
 </div>
 </main>
