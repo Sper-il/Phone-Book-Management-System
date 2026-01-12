@@ -103,12 +103,21 @@
 <div class="flex-1 overflow-y-auto px-10 py-8">
 <div class="max-w-5xl mx-auto">
 <div class="flex justify-end mb-6">
-<div class="relative group">
-<button class="flex items-center gap-2 text-xs font-medium text-gray-500 hover:text-gray-800 transition-colors uppercase tracking-wider">
-                            Sort A-Z
-                            <span class="material-symbols-outlined text-sm">expand_more</span>
-</button>
-</div>
+  <div class="flex items-center gap-3">
+    <label for="sortBy" class="sr-only">Sort by</label>
+    <div class="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-1 shadow-sm">
+      <span class="text-xs font-medium text-gray-500 uppercase tracking-wider">Sort</span>
+      <select id="sortBy" class="text-xs border-none outline-none bg-transparent">
+        <option value="name">Name</option>
+        <option value="phone">Phone</option>
+        <option value="group">Group</option>
+      </select>
+      <select id="sortDir" class="text-xs border-none outline-none bg-transparent">
+        <option value="asc">A → Z</option>
+        <option value="desc">Z → A</option>
+      </select>
+    </div>
+  </div>
 </div>
 <div class="w-full">
 <table class="w-full text-left">
@@ -135,119 +144,96 @@
 </div>
 
 <script>
-(async function(){
-  const body = document.getElementById('contactsBody');
+const body = document.getElementById('contactsBody');
+const input = document.getElementById('searchInput');
+const sortByEl = document.getElementById('sortBy');
+const sortDirEl = document.getElementById('sortDir');
+let contactsCache = [];
+let debounceTimer = null;
+
+async function loadContactsOnce(){
+  body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Loading contacts…</div></td></tr>';
   try{
-    const res = await fetch("/api/contacts");
-    if(!res.ok) throw new Error('Network response was not ok');
-    const contacts = await res.json();
-    body.innerHTML = '';
-    if(!contacts || contacts.length === 0){
-      body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Danh sách trống — chưa có liên hệ hiển thị. Nhấn "Add Contact" để thêm liên hệ hoặc mở Dashboard khác.</div></td></tr>';
-      return;
-    }
-    contacts.forEach(contact=>{
-      const tr = document.createElement('tr');
-      tr.className = 'table-row group';
-      const initials = (contact.name.match(/\b\w/g)||[]).slice(0,2).join('').toUpperCase();
-      tr.innerHTML = `
+    const res = await fetch('/test_user_data/contacts.json', {cache: 'no-store'});
+    if(!res.ok) throw new Error('Status ' + res.status);
+    contactsCache = await res.json();
+  }catch(err){
+    console.error('[UI] loadContacts error', err);
+    body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-red-500">Lỗi tải dữ liệu (không thể đọc contacts.json)</div></td></tr>';
+    contactsCache = [];
+  }
+}
+
+function applySort(list, by='name', dir='asc'){
+  const copy = Array.from(list);
+  const reverse = (dir === 'desc');
+  copy.sort((a,b)=>{
+    const va = (a[by] || '').toString().toLowerCase();
+    const vb = (b[by] || '').toString().toLowerCase();
+    if(va < vb) return reverse ? 1 : -1;
+    if(va > vb) return reverse ? -1 : 1;
+    return 0;
+  });
+  return copy;
+}
+
+function renderList(list){
+  if(!list || list.length === 0){
+    body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Không tìm thấy liên hệ</div></td></tr>';
+    return;
+  }
+  body.innerHTML = '';
+  list.forEach(contact=>{
+    const initials = ((contact.name||'').match(/\b\w/g)||[]).slice(0,2).join('').toUpperCase();
+    const tr = document.createElement('tr');
+    tr.className = 'table-row';
+    tr.innerHTML = `
 <td class="py-6">
   <div class="flex items-center gap-4">
     <div class="size-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center font-semibold text-xs">${initials}</div>
-    <span class="text-sm font-medium text-gray-900">${contact.name}</span>
+    <span class="text-sm font-medium text-gray-900">${contact.name || ''}</span>
   </div>
 </td>
-<td class="py-6 text-sm text-gray-500">${contact.phone}</td>
+<td class="py-6 text-sm text-gray-500">${contact.phone || ''}</td>
 <td class="py-6">
-  <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">${contact.group}</span>
-</td>
-<td class="py-6 text-right">
-  <button data-id="${contact.id}" class="delete-btn text-gray-300 hover:text-red-500 transition-colors">
-    <span class="material-symbols-outlined text-xl">delete</span>
-  </button>
-</td>
-`;
-      body.appendChild(tr);
-    });
-    // attach delete handlers
-    body.querySelectorAll('.delete-btn').forEach(btn=>{
-      btn.addEventListener('click', function(){
-        const row = this.closest('tr');
-        row.remove();
-      });
-    });
-    // attach Delete All button (find by text)
-    const deleteAll = Array.from(document.querySelectorAll('button')).find(b=>b.textContent && b.textContent.includes('Delete All'));
-    if(deleteAll){
-      deleteAll.addEventListener('click', function(){
-        body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Danh sách trống — chưa có liên hệ hiển thị.</div></td></tr>';
-      });
-    }
-  }catch(err){
-    body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-red-500">Không thể tải dữ liệu.</div></td></tr>';
-    console.error(err);
-  }
-})();
-
-</script>
-<script>
-const body = document.getElementById("contactsBody");
-const input = document.getElementById("searchInput");
-
-async function renderContacts(keyword = "") {
-    const url = keyword
-        ? `/api/search?keyword=${encodeURIComponent(keyword)}`
-        : `/api/contacts`;
-
-    const res = await fetch(url);
-    const contacts = await res.json();
-
-    body.innerHTML = "";
-
-    if (!contacts || contacts.length === 0) {
-        body.innerHTML = `
-        <tr class="table-row">
-            <td class="py-12 text-center" colspan="4">
-                <div class="text-gray-500">Không tìm thấy liên hệ</div>
-            </td>
-        </tr>`;
-        return;
-    }
-
-    contacts.forEach(contact => {
-        const initials = (contact.name.match(/\b\w/g)||[])
-            .slice(0,2).join('').toUpperCase();
-
-        body.innerHTML += `
-<tr class="table-row">
-<td class="py-6">
-  <div class="flex items-center gap-4">
-    <div class="size-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center font-semibold text-xs">
-      ${initials}
-    </div>
-    <span class="text-sm font-medium text-gray-900">${contact.name}</span>
-  </div>
-</td>
-<td class="py-6 text-sm text-gray-500">${contact.phone}</td>
-<td class="py-6">
-  <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">
-    ${contact.group}
-  </span>
+  <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">${contact.group || ''}</span>
 </td>
 <td class="py-6 text-right">
   <span class="material-symbols-outlined text-xl text-gray-300">delete</span>
 </td>
-</tr>`;
-    });
+`;
+    body.appendChild(tr);
+  });
 }
 
-// load lần đầu
-renderContacts();
+function filterAndRender(keyword=''){
+  const kw = (keyword || '').toString().trim().toLowerCase();
+  let list = contactsCache;
+  if(kw){
+    list = list.filter(c=> (c.name||'').toString().toLowerCase().includes(kw));
+  }
+  const by = sortByEl ? sortByEl.value : 'name';
+  const dir = sortDirEl ? sortDirEl.value : 'asc';
+  list = applySort(list, by, dir);
+  renderList(list);
+}
 
-// search realtime
-input.addEventListener("input", function () {
-    renderContacts(this.value.trim());
+// initial load
+(async function(){
+  await loadContactsOnce();
+  filterAndRender();
+})();
+
+// search with debounce
+input.addEventListener('input', function(){
+  clearTimeout(debounceTimer);
+  const v = this.value.trim();
+  debounceTimer = setTimeout(()=> filterAndRender(v), 200);
 });
+
+// sort controls
+if(sortByEl) sortByEl.addEventListener('change', ()=> filterAndRender(input.value.trim()));
+if(sortDirEl) sortDirEl.addEventListener('change', ()=> filterAndRender(input.value.trim()));
 </script>
 
 </body></html>
