@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>New Group - Dashboard 3</title>
+  <title>Add New Group - Dashboard 3</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 </head>
@@ -21,12 +21,40 @@
     </header>
 
     <main class="p-8">
-      <div class="text-center py-16">
-        <p class="text-gray-600">Giao diện tạo nhóm đã được rút gọn.</p>
-        <p class="text-sm text-gray-400 mt-3">Nếu muốn, tôi có thể thêm form tạo nhóm ở đây.</p>
-      </div>
+      <form id="addGroupForm" class="max-w-md mx-auto space-y-4">
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">Group Name</label>
+          <input name="groupName" required class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3" placeholder="Work" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">Color (hex)</label>
+          <input name="color" class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3" placeholder="#FFB84D" />
+        </div>
+        <div class="flex items-center gap-3 justify-center">
+          <button type="submit" class="bg-primary text-white px-5 py-3 rounded-lg font-semibold">Create Group</button>
+          <a href="../contact_list_dashboard_2/code.html" class="text-sm text-gray-500">Cancel</a>
+        </div>
+      </form>
+
+      <div id="toast-group" class="hidden fixed right-6 bottom-6 bg-green-600 text-white px-4 py-2 rounded shadow">Group created</div>
     </main>
 
   </div>
+
+<script>
+document.getElementById('addGroupForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  const name = this.groupName.value.trim();
+  if(!name){
+    alert('Vui lòng nhập tên nhóm.');
+    return;
+  }
+  const t = document.getElementById('toast-group');
+  t.textContent = 'Group "' + name + '" created (demo).';
+  t.classList.remove('hidden');
+  setTimeout(()=> t.classList.add('hidden'), 2000);
+  this.reset();
+});
+</script>
 </body>
 </html>

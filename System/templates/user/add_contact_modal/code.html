@@ -3,15 +3,15 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Add Contact (Modal)</title>
+  <title>Add Contact</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
 </head>
 <body class="min-h-screen bg-gray-50 p-6">
-  <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+  <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-md overflow-hidden">
     <header class="flex items-center gap-4 px-6 py-4 border-b">
       <a href="../index.html" class="text-sm font-semibold text-primary">&larr; Back</a>
-      <h1 class="text-lg font-medium text-gray-800">Add Contact (Modal)</h1>
+      <h1 class="text-lg font-medium text-gray-800">Add Contact</h1>
       <nav class="ml-auto flex gap-2">
         <a href="../contact_list_dashboard_1/code.html" class="px-3 py-1 bg-blue-600 text-white rounded text-sm">D1</a>
         <a href="../add_contact_modal/code.html" class="px-3 py-1 bg-green-600 text-white rounded text-sm">Add</a>
@@ -21,12 +21,53 @@
     </header>
 
     <main class="p-8">
-      <div class="text-center py-16">
-        <p class="text-gray-600">Phiên bản rút gọn: nhấn "Add Contact" trong dashboard để mở form thêm liên hệ.</p>
-        <p class="text-sm text-gray-400 mt-3">Muốn mình chuyển modal thành trang form đầy đủ không?</p>
-      </div>
+      <form id="addContactForm" class="space-y-6" novalidate>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">Full Name</label>
+          <input name="name" required class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3" placeholder="John Doe" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">Phone</label>
+          <input name="phone" required class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3" placeholder="+1 (555) 012-3456" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-gray-700">Group</label>
+          <select name="group" class="mt-2 w-full border border-gray-200 rounded-lg px-4 py-3">
+            <option value="">Uncategorized</option>
+            <option value="work">Work</option>
+            <option value="family">Family</option>
+            <option value="friends">Friends</option>
+          </select>
+        </div>
+        <div class="flex items-center gap-3">
+          <button type="submit" class="bg-primary text-white px-5 py-3 rounded-lg font-semibold">Save Contact</button>
+          <a href="../contact_list_dashboard_1/code.html" class="text-sm text-gray-500">Cancel</a>
+        </div>
+      </form>
+
+      <div id="toast" class="hidden fixed right-6 bottom-6 bg-green-600 text-white px-4 py-2 rounded shadow">Saved</div>
     </main>
 
   </div>
+
+<script>
+document.getElementById('addContactForm').addEventListener('submit', function(e){
+  e.preventDefault();
+  // simple client-side validation
+  const name = this.name.value.trim();
+  const phone = this.phone.value.trim();
+  if(!name || !phone){
+    alert('Vui lòng nhập tên và số điện thoại.');
+    return;
+  }
+  // show toast
+  const t = document.getElementById('toast');
+  t.textContent = 'Contact saved (demo).';
+  t.classList.remove('hidden');
+  setTimeout(()=> t.classList.add('hidden'), 2000);
+  // reset form for demo
+  this.reset();
+});
+</script>
 </body>
 </html>
