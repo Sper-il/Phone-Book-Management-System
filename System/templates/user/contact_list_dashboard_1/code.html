@@ -117,10 +117,10 @@
 <th class="pb-4 text-[11px] font-bold text-gray-400 uppercase tracking-widest text-right">Actions</th>
 </tr>
 </thead>
-<tbody class="divide-y divide-border-color">
+<tbody id="contactsBody" class="divide-y divide-border-color">
 <tr class="table-row">
 <td class="py-12 text-center" colspan="4">
-<div class="text-gray-500">Danh sách trống — chưa có liên hệ hiển thị. Nhấn "Add Contact" để thêm liên hệ hoặc mở Dashboard khác.</div>
+<div class="text-gray-500">Loading contacts…</div>
 </td>
 </tr>
 </tbody>
@@ -130,5 +130,61 @@
 </div>
 </main>
 </div>
+
+<script>
+(async function(){
+  const body = document.getElementById('contactsBody');
+  try{
+    const res = await fetch('/test_user_data/contacts.json');
+    if(!res.ok) throw new Error('Network response was not ok');
+    const contacts = await res.json();
+    body.innerHTML = '';
+    if(!contacts || contacts.length === 0){
+      body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Danh sách trống — chưa có liên hệ hiển thị. Nhấn "Add Contact" để thêm liên hệ hoặc mở Dashboard khác.</div></td></tr>';
+      return;
+    }
+    contacts.forEach(contact=>{
+      const tr = document.createElement('tr');
+      tr.className = 'table-row group';
+      const initials = (contact.name.match(/\b\w/g)||[]).slice(0,2).join('').toUpperCase();
+      tr.innerHTML = `
+<td class="py-6">
+  <div class="flex items-center gap-4">
+    <div class="size-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center font-semibold text-xs">${initials}</div>
+    <span class="text-sm font-medium text-gray-900">${contact.name}</span>
+  </div>
+</td>
+<td class="py-6 text-sm text-gray-500">${contact.phone}</td>
+<td class="py-6">
+  <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">${contact.group}</span>
+</td>
+<td class="py-6 text-right">
+  <button data-id="${contact.id}" class="delete-btn text-gray-300 hover:text-red-500 transition-colors">
+    <span class="material-symbols-outlined text-xl">delete</span>
+  </button>
+</td>
+`;
+      body.appendChild(tr);
+    });
+    // attach delete handlers
+    body.querySelectorAll('.delete-btn').forEach(btn=>{
+      btn.addEventListener('click', function(){
+        const row = this.closest('tr');
+        row.remove();
+      });
+    });
+    // attach Delete All button (find by text)
+    const deleteAll = Array.from(document.querySelectorAll('button')).find(b=>b.textContent && b.textContent.includes('Delete All'));
+    if(deleteAll){
+      deleteAll.addEventListener('click', function(){
+        body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-gray-500">Danh sách trống — chưa có liên hệ hiển thị.</div></td></tr>';
+      });
+    }
+  }catch(err){
+    body.innerHTML = '<tr class="table-row"><td class="py-12 text-center" colspan="4"><div class="text-red-500">Không thể tải dữ liệu.</div></td></tr>';
+    console.error(err);
+  }
+})();
+</script>
 
 </body></html>

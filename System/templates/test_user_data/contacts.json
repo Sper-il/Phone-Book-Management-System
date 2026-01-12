@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Alex Rivera", "phone": "+1 (555) 012-3456", "group": "" },
+  { "id": 2, "name": "Sarah Jenkins", "phone": "+1 (555) 043-9812", "group": "" },
+  { "id": 3, "name": "Michael Chen", "phone": "+1 (555) 098-7654", "group": "" },
+  { "id": 4, "name": "Jordan Smith", "phone": "+1 (555) 011-2233", "group": "" },
+  { "id": 5, "name": "Emma Wilson", "phone": "+1 (555) 067-4321", "group": "" },
+  { "id": 6, "name": "Priya Patel", "phone": "+1 (555) 077-8899", "group": "" }
+]
