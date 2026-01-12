@@ -81,7 +81,10 @@
 <div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
 <div class="flex-1 relative">
 <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-gray-400">search</span>
-<input class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-12 pr-4 py-3 text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all" placeholder="Search for contacts..." type="text"/>
+<input id="searchInput"
+        class="w-full bg-gray-50 border border-gray-200 rounded-lg pl-12 pr-4 py-3 text-sm focus:ring-1 focus:ring-primary focus:border-primary outline-none transition-all"
+        placeholder="Search for contacts..."
+        type="text"/>
 </div>
 <div class="flex items-center gap-3 shrink-0">
 <button class="border border-red-200 hover:bg-red-50 text-red-600 px-5 py-3 rounded-lg text-sm font-semibold flex items-center gap-2 transition-all">
@@ -135,7 +138,7 @@
 (async function(){
   const body = document.getElementById('contactsBody');
   try{
-    const res = await fetch('/test_user_data/contacts.json');
+    const res = await fetch("/api/contacts");
     if(!res.ok) throw new Error('Network response was not ok');
     const contacts = await res.json();
     body.innerHTML = '';
@@ -185,6 +188,66 @@
     console.error(err);
   }
 })();
+
+</script>
+<script>
+const body = document.getElementById("contactsBody");
+const input = document.getElementById("searchInput");
+
+async function renderContacts(keyword = "") {
+    const url = keyword
+        ? `/api/search?keyword=${encodeURIComponent(keyword)}`
+        : `/api/contacts`;
+
+    const res = await fetch(url);
+    const contacts = await res.json();
+
+    body.innerHTML = "";
+
+    if (!contacts || contacts.length === 0) {
+        body.innerHTML = `
+        <tr class="table-row">
+            <td class="py-12 text-center" colspan="4">
+                <div class="text-gray-500">Không tìm thấy liên hệ</div>
+            </td>
+        </tr>`;
+        return;
+    }
+
+    contacts.forEach(contact => {
+        const initials = (contact.name.match(/\b\w/g)||[])
+            .slice(0,2).join('').toUpperCase();
+
+        body.innerHTML += `
+<tr class="table-row">
+<td class="py-6">
+  <div class="flex items-center gap-4">
+    <div class="size-9 rounded-full bg-gray-100 text-gray-500 flex items-center justify-center font-semibold text-xs">
+      ${initials}
+    </div>
+    <span class="text-sm font-medium text-gray-900">${contact.name}</span>
+  </div>
+</td>
+<td class="py-6 text-sm text-gray-500">${contact.phone}</td>
+<td class="py-6">
+  <span class="text-[11px] font-bold text-gray-400 uppercase tracking-wider">
+    ${contact.group}
+  </span>
+</td>
+<td class="py-6 text-right">
+  <span class="material-symbols-outlined text-xl text-gray-300">delete</span>
+</td>
+</tr>`;
+    });
+}
+
+// load lần đầu
+renderContacts();
+
+// search realtime
+input.addEventListener("input", function () {
+    renderContacts(this.value.trim());
+});
 </script>
 
 </body></html>
