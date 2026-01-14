@@ -1,80 +1,96 @@
-import json
-import csv
+"""
+Search module - Tìm kiếm contacts (OOP + backward compatibility)."""
+from __future__ import annotations
 import os
-import sys
+from typing import List, Dict, Any, Optional
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-# use System/test_user_data (explicit)
-POSSIBLE_DIRS = [
-    os.path.join(BASE_DIR, 'test_user_data')
-]
-
-
-def _find_data_dir():
-    for d in POSSIBLE_DIRS:
-        if os.path.isdir(d):
-            print(f"[search] using data dir: {d}")
-            return d
-    print(f"[search] no data dir found; checked: {POSSIBLE_DIRS}", file=sys.stderr)
-    return POSSIBLE_DIRS[0]
+try:
+    from .sorter import ContactsSorter
+except ImportError:
+    from sorter import ContactsSorter
 
 
-def _load_json(path):
-    try:
-        with open(path, 'r', encoding='utf-8') as f:
-            data = json.load(f)
-            if isinstance(data, list):
-                return data
-            if isinstance(data, dict) and 'contacts' in data:
-                return data['contacts']
-            return []
-    except Exception as e:
-        print(f"[search] error loading json {path}: {e}", file=sys.stderr)
-        return []
+class ContactSearcher:
+    """Tìm kiếm contacts từ file JSON/CSV."""
+    
+    DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), 'test_user_data')
+    DEFAULT_FIELDS = ['name', 'phone']
+    
+    def __init__(self, data_dir: Optional[str] = None):
+        self._data_dir = data_dir or self.DATA_DIR
+        self._sorter = ContactsSorter()
+        self._loaded = False
+    
+    def load(self) -> 'ContactSearcher':
+        """Load contacts từ JSON hoặc CSV."""
+        self._sorter = ContactsSorter()  # Reset sorter
+        for ext in ['json', 'csv']:
+            path = os.path.join(self._data_dir, f'contacts.{ext}')
+            if os.path.isfile(path):
+                getattr(self._sorter, f'load_{ext}')(path)
+                self._loaded = True
+                break
+        return self
+    
+    def reload(self) -> 'ContactSearcher':
+        """Force reload contacts từ file."""
+        self._loaded = False
+        return self.load()
+    
+    def get_all(self) -> List[Dict[str, Any]]:
+        if not self._loaded: self.load()
+        return self._sorter.get_contacts()
+    
+    def search(self, keyword: str, fields: Optional[List[str]] = None) -> List[Dict[str, Any]]:
+        """Tìm kiếm theo keyword trong các fields."""
+        if fields is None:
+            fields = self.DEFAULT_FIELDS
+        kw = (keyword or '').lower().strip()
+        if not kw: return self.get_all()
+        return [c for c in self.get_all() 
+                if any(kw in (c.get(f) or '').lower() for f in fields)]
+    
+    def search_by_name(self, keyword: str) -> List[Dict[str, Any]]:
+        return self.search(keyword, ['name'])
+    
+    def search_by_phone(self, keyword: str) -> List[Dict[str, Any]]:
+        return self.search(keyword, ['phone'])
+    
+    def search_by_name_or_phone(self, keyword: str) -> List[Dict[str, Any]]:
+        return self.search(keyword, ['name', 'phone'])
+    
+    def sort(self, field: str = 'name', reverse: bool = False) -> List[Dict[str, Any]]:
+        if not self._loaded: self.load()
+        return self._sorter.sort_by(field, reverse).get_contacts()
 
 
-def _load_csv(path):
-    contacts = []
-    try:
-        with open(path, newline='', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                contacts.append({
-                    'id': int(row.get('id') or 0),
-                    'name': row.get('name') or '',
-                    'phone': row.get('phone') or '',
-                    'group': row.get('group') or ''
-                })
-    except Exception as e:
-        print(f"[search] error loading csv {path}: {e}", file=sys.stderr)
-        return []
-    return contacts
+# === Backward compatibility ===
+_searcher: Optional[ContactSearcher] = None
 
+def _get_searcher(force_reload: bool = False) -> ContactSearcher:
+    global _searcher
+    if not _searcher:
+        _searcher = ContactSearcher().load()
+    elif force_reload:
+        _searcher.reload()
+    return _searcher
 
-def load_all():
-    data_dir = _find_data_dir()
-    json_path = os.path.join(data_dir, 'contacts.json')
-    csv_path = os.path.join(data_dir, 'contacts.csv')
-    if os.path.isfile(json_path):
-        return _load_json(json_path)
-    if os.path.isfile(csv_path):
-        return _load_csv(csv_path)
-    return []
+def reload_contacts() -> None:
+    """Force reload contacts từ file."""
+    _get_searcher(force_reload=True)
 
+def load_all() -> List[Dict[str, Any]]:
+    """Legacy wrapper - load tất cả contacts (always fresh)."""
+    return _get_searcher(force_reload=True).get_all()
 
-def search_by_name(keyword: str):
-    keyword = (keyword or '').lower().strip()
-    contacts = load_all()
+def search_by_name(keyword: str) -> List[Dict[str, Any]]:
+    """Legacy wrapper - tìm theo tên."""
+    return _get_searcher(force_reload=True).search_by_name(keyword)
 
-    if not keyword:
-        return contacts
+def search_by_phone(keyword: str) -> List[Dict[str, Any]]:
+    """Legacy wrapper - tìm theo số điện thoại."""
+    return _get_searcher(force_reload=True).search_by_phone(keyword)
 
-    results = []
-    for c in contacts:
-        try:
-            if keyword in (c.get('name') or '').lower():
-                results.append(c)
-        except Exception:
-            continue
-
-    return results
+def search_by_name_or_phone(keyword: str) -> List[Dict[str, Any]]:
+    """Legacy wrapper - tìm theo tên hoặc SĐT."""
+    return _get_searcher(force_reload=True).search_by_name_or_phone(keyword)
