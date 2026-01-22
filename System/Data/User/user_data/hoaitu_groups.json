@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "friend",
+    "color": "#22C55E",
+    "description": "",
+    "is_shared": 0,
+    "created_at": "2026-01-22T22:30:28.654156",
+    "updated_at": "2026-01-22T22:30:28.654156"
+  }
+]

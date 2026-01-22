@@ -1,15 +1,28 @@
 [
   {
-    "id": 1,
-    "name": "dfghj",
-    "phone": "123456789",
-    "phone_normalized": "123456789",
+    "id": 2,
+    "name": "hoaitu",
+    "phone": "1234567876",
+    "phone_normalized": "1234567876",
     "email": "",
     "address": "",
     "group": "",
     "notes": "",
     "avatar": "",
-    "created_at": "2026-01-22T22:14:25.828828",
-    "updated_at": "2026-01-22T22:14:25.828828"
+    "created_at": "2026-01-22T22:29:50.312537",
+    "updated_at": "2026-01-22T22:29:50.312537"
+  },
+  {
+    "id": 3,
+    "name": "tuan",
+    "phone": "012345675",
+    "phone_normalized": "012345675",
+    "email": "",
+    "address": "",
+    "group": "friend",
+    "notes": "",
+    "avatar": "",
+    "created_at": "2026-01-22T22:30:54.201393",
+    "updated_at": "2026-01-22T22:30:54.201393"
   }
 ]
