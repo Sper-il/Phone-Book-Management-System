@@ -79,7 +79,7 @@
 <div class="flex items-center gap-3 px-2 py-2 bg-primary/5 rounded-lg">
 <div class="size-9 rounded-full bg-gradient-to-br from-orange-400 to-orange-500 flex items-center justify-center text-white font-semibold text-sm" id="userAvatar">AM</div>
 <div class="overflow-hidden flex-1">
-<p class="text-sm font-semibold truncate text-gray-800" id="userName">Alex Morgan</p>
+<p class="text-sm font-semibold truncate text-gray-800" id="userName">{{ current_user }}</p>
 <p class="text-xs text-gray-500">User</p>
 </div>
 </div>
@@ -391,6 +391,25 @@ function filterAndRender(keyword=''){
   list = applySort(list, by, dir);
   renderList(list);
 }
+
+// Get username and update avatar
+document.addEventListener('DOMContentLoaded', function() {
+  const userNameEl = document.getElementById('userName');
+  const userAvatarEl = document.getElementById('userAvatar');
+  
+  if (userNameEl && userAvatarEl) {
+    const username = userNameEl.textContent.trim();
+    if (username && username !== 'User') {
+      // Generate initials
+      const initials = username
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase())
+        .join('')
+        .slice(0, 2);
+      userAvatarEl.textContent = initials;
+    }
+  }
+});
 
 // initial load
 (async function(){

@@ -275,6 +275,20 @@
       "created_at": "2026-01-22T20:51:23.223307",
       "is_active": 1,
       "contacts_file": "hoaitu_contacts.json"
+    },
+    {
+      "id": 2,
+      "username": "túuu",
+      "password": "fd2e5546948d66ad5fc208d4b7452f6e3139d3def698e733e34a22c403c189b0",
+      "password_plain": "160306",
+      "fullname": "",
+      "email": "",
+      "security_question": "What is your pet's name?",
+      "security_answer": "viet",
+      "security_answer_hash": "209400a93168b367e9604f427bb1c5a56f546889262014e84f153a1d273cf631",
+      "created_at": "2026-01-22T23:04:29.114726",
+      "is_active": 1,
+      "contacts_file": "túuu_contacts.json"
     }
   ]
 }

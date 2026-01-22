@@ -57,12 +57,14 @@ def index():
 @app.route("/dashboard")
 @user_required
 def dashboard():
-    return render_template("user/Contact_List.html")
+    current_user = session.get('user', 'User')
+    return render_template("user/Contact_List.html", current_user=current_user)
 
 @app.route("/groups")
 @user_required
 def groups():
-    return render_template("user/Group.html")
+    current_user = session.get('user', 'User')
+    return render_template("user/Group.html", current_user=current_user)
 
 @app.route("/add-group")
 @user_required
