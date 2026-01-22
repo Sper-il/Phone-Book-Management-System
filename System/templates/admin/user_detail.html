@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Details - Admin Panel</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#136dec',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <a href="/admin/dashboard" class="text-gray-400 hover:text-primary transition-colors">
+                        <span class="material-symbols-outlined text-2xl">arrow_back</span>
+                    </a>
+                    <span class="material-symbols-outlined text-primary text-3xl">person</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">User Details</h1>
+                        <p class="text-xs text-gray-500">View and manage user information</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-4">
+                    <a href="/admin/dashboard" class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined text-xl mr-2">dashboard</span>
+                        Back to Dashboard
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div class="bg-white rounded-xl border border-gray-200 overflow-hidden">
+            <div class="px-6 py-4 border-b border-gray-200 bg-gray-50">
+                <h2 class="text-lg font-bold text-gray-900">User Information</h2>
+            </div>
+            
+            <div class="p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Username -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">badge</span>
+                            Username
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <p class="text-gray-900 font-medium">{{ user.username }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Password (Plain) -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">key</span>
+                            Password (Plain)
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <code class="text-gray-900 font-mono">{{ user.password_plain }}</code>
+                        </div>
+                    </div>
+
+                    <!-- Total Contacts -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">contacts</span>
+                            Total Contacts
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <p class="text-gray-900 font-medium">{{ user.contact_count }} contacts</p>
+                        </div>
+                    </div>
+
+                    <!-- Created At -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">calendar_today</span>
+                            Created At
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <p class="text-gray-900">{{ user.created_at }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Security Question -->
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">help</span>
+                            Security Question
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <p class="text-gray-900">{{ user.security_question }}</p>
+                        </div>
+                    </div>
+
+                    <!-- Security Answer -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">check_circle</span>
+                            Security Answer
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <code class="text-gray-900 font-mono">{{ user.security_answer }}</code>
+                        </div>
+                    </div>
+
+                    <!-- Contacts File -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">folder</span>
+                            Contacts File
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <code class="text-gray-900 font-mono text-sm">{{ user.contacts_file }}</code>
+                        </div>
+                    </div>
+
+                    <!-- Password Hash (Full Width) -->
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">lock</span>
+                            Password Hash (SHA256)
+                        </label>
+                        <div class="px-4 py-3 bg-gray-50 rounded-lg border border-gray-200">
+                            <code class="text-gray-700 font-mono text-xs break-all">{{ user.password }}</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="mt-6 flex justify-between items-center">
+            <a href="/admin/dashboard" class="inline-flex items-center px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors font-medium">
+                <span class="material-symbols-outlined text-xl mr-2">arrow_back</span>
+                Back to Dashboard
+            </a>
+
+            {% if user.username != 'admin' %}
+            <button 
+                onclick="confirmDelete()"
+                class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors font-medium"
+            >
+                <span class="material-symbols-outlined text-xl mr-2">delete</span>
+                Delete User
+            </button>
+            {% endif %}
+        </div>
+    </main>
+
+    <script>
+        function confirmDelete() {
+            const username = "{{ user.username }}";
+            
+            if (!confirm(`Are you sure you want to delete user "${username}"?\n\nThis action cannot be undone and will delete:\n- User account\n- All user contacts\n- All associated data`)) {
+                return;
+            }
+
+            // Second confirmation
+            if (!confirm(`Final confirmation: Delete user "${username}"?`)) {
+                return;
+            }
+
+            fetch(`/admin/api/user/${username}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(data.message);
+                    window.location.href = '/admin';
+                } else {
+                    alert('Error: ' + data.message);
+                }
+            })
+            .catch(error => {
+                alert('Error deleting user: ' + error.message);
+            });
+        }
+    </script>
+</body>
+</html>

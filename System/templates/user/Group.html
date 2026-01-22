@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Group Management - Contacts</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background": "#fcfcfc",
+                        "sidebar": "#f8f9fa",
+                        "border-color": "#eeeeee"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        body {
+            @apply bg-background text-gray-800;
+        }
+        .sidebar-item {
+            @apply flex items-center gap-3 px-4 py-2 text-sm font-medium text-gray-600 rounded-md transition-colors hover:bg-gray-200/50;
+        }
+        .sidebar-item.active {
+            @apply text-primary bg-primary/5;
+        }
+        .group-card {
+            @apply bg-white border border-border-color rounded-xl p-6 transition-all hover:shadow-sm hover:border-gray-300;
+        }
+        /* Toast and confirm styles */
+        .toast { animation: slideIn 0.3s ease-out; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .confirm-dialog { animation: fadeIn 0.2s ease-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Toast Container -->
+<div id="toast-container" class="fixed top-4 right-4 z-[100] space-y-2"></div>
+
+<!-- Confirm Dialog -->
+<div id="confirm-dialog" class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
+    <div class="confirm-dialog bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+        <div class="flex items-center gap-3 mb-4">
+            <div id="confirm-icon-container" class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                <span id="confirm-icon" class="material-symbols-outlined text-red-600">warning</span>
+            </div>
+            <h3 id="confirm-title" class="text-lg font-semibold text-gray-900">Confirm</h3>
+        </div>
+        <p id="confirm-message" class="text-gray-600 mb-6">Are you sure?</p>
+        <div class="flex justify-end gap-3">
+            <button onclick="hideConfirm(false)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 font-medium text-gray-700">Cancel</button>
+            <button id="confirm-btn" onclick="hideConfirm(true)" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium">Delete</button>
+        </div>
+    </div>
+</div>
+
+<header class="w-full bg-white/90 dark:bg-gray-900/70 backdrop-blur-sm shadow-sm px-4 py-3 flex items-center gap-4">
+  <button onclick="handleLogout()" class="text-sm font-semibold text-primary hover:underline cursor-pointer">&larr; Logout</button>
+  <div class="text-sm text-gray-600">Group Management</div>
+</header>
+<div class="flex h-screen overflow-hidden">
+<aside class="w-64 bg-sidebar border-r border-border-color flex flex-col shrink-0">
+<div class="p-8">
+<h1 class="text-sm font-bold tracking-widest text-gray-400 uppercase">Contacts</h1>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="sidebar-item" href="/dashboard">
+    <span class="material-symbols-outlined text-xl">person</span>
+    <span>All Contacts</span>
+</a>
+<div class="pt-2">
+<a class="sidebar-item active" href="#">
+<span class="material-symbols-outlined text-xl">group</span>
+<span>Group</span>
+</a>
+</div>
+</nav>
+<div class="p-6 mt-auto">
+<div class="flex items-center gap-3 px-2">
+<img alt="Profile" class="size-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQScCWfGGuTg6A24flA8R8DM2cr6f7RjfmjuZebajyweprT5NmKoU0RtkuKK3SPHHCZCX5UKL9ujrqHIeoWcI-NyLyLGbjGaeQacV5GfFst4WZTUaiHXt8y0DHfBArarh3_OkhD-s9Nfnh3LiUKHMfn-jp5ca1GXp3tPnuq1gUUJ6jf0wDNua-RV1DHgrhgwqN0tpxe9FX9ciRG63yEnoy62e2YfBLbrsEhGSGkMbHgEhFlDD_HQqVVXnDo3_UfgKMNzzyJzV4lzo"/>
+<div class="overflow-hidden">
+<p class="text-xs font-semibold truncate text-gray-700">Alex Morgan</p>
+</div>
+</div>
+</div>
+</aside>
+<main class="flex-1 flex flex-col bg-white overflow-hidden">
+<header class="px-10 py-6 border-b border-border-color">
+<div class="max-w-5xl mx-auto flex items-center justify-between gap-4">
+<h2 class="text-2xl font-bold text-gray-900">Groups</h2>
+<div class="flex items-center gap-3 shrink-0">
+<a href="/add-group">
+    <button class="bg-primary hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-sm font-semibold flex items-center gap-2 transition-colors shadow-sm">
+        <span class="material-symbols-outlined text-lg">add</span>
+        Add New Group
+    </button>
+</a>
+</div>
+</header>
+<div class="flex-1 overflow-y-auto px-10 py-10">
+<div class="max-w-5xl mx-auto">
+  <!-- Loading state -->
+  <div id="loading-state" class="text-center py-16">
+    <div class="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mx-auto"></div>
+    <p class="text-gray-500 mt-4">Loading groups...</p>
+  </div>
+  
+  <!-- Empty state -->
+  <div id="empty-state" class="text-center py-16 hidden">
+    <span class="material-symbols-outlined text-6xl text-gray-300">folder_open</span>
+    <p class="text-gray-600 mt-4">No groups to display.</p>
+    <p class="text-sm text-gray-400 mt-2">Click "Add New Group" to create a new group.</p>
+  </div>
+  
+  <!-- Groups grid -->
+  <div id="groups-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden">
+  </div>
+</div>
+</div>
+</main>
+</div>
+
+<script>
+let groups = [];
+let confirmCallback = null;
+
+// Toast notification
+function showToast(message, type = 'success') {
+    const container = document.getElementById('toast-container');
+    const toast = document.createElement('div');
+    const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600';
+    const icon = type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info';
+    
+    toast.className = `toast flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl text-white ${bgColor}`;
+    toast.innerHTML = `<span class="material-symbols-outlined">${icon}</span><span class="font-medium">${message}</span>`;
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideIn 0.3s ease-out reverse';
+        setTimeout(() => toast.remove(), 300);
+    }, 3000);
+}
+
+// Confirm dialog
+function showConfirm(title, message, isLogout = false) {
+    return new Promise((resolve) => {
+        document.getElementById('confirm-title').textContent = title;
+        document.getElementById('confirm-message').textContent = message;
+        const iconContainer = document.getElementById('confirm-icon-container');
+        const icon = document.getElementById('confirm-icon');
+        const btn = document.getElementById('confirm-btn');
+        
+        if (isLogout) {
+            iconContainer.className = 'w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center';
+            icon.className = 'material-symbols-outlined text-blue-600';
+            icon.textContent = 'logout';
+            btn.className = 'px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium';
+            btn.textContent = 'Logout';
+        } else {
+            iconContainer.className = 'w-10 h-10 rounded-full bg-red-100 flex items-center justify-center';
+            icon.className = 'material-symbols-outlined text-red-600';
+            icon.textContent = 'warning';
+            btn.className = 'px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium';
+            btn.textContent = 'Delete';
+        }
+        
+        document.getElementById('confirm-dialog').classList.remove('hidden');
+        confirmCallback = resolve;
+    });
+}
+
+function hideConfirm(result) {
+    document.getElementById('confirm-dialog').classList.add('hidden');
+    if (confirmCallback) confirmCallback(result);
+}
+
+// Load groups on page load
+document.addEventListener('DOMContentLoaded', loadGroups);
+
+function loadGroups() {
+  const loadingState = document.getElementById('loading-state');
+  const emptyState = document.getElementById('empty-state');
+  const groupsContainer = document.getElementById('groups-container');
+  
+  fetch('/api/groups')
+    .then(response => response.json())
+    .then(data => {
+      loadingState.classList.add('hidden');
+      
+      if (data.success && data.groups && data.groups.length > 0) {
+        groups = data.groups;
+        renderGroups();
+        groupsContainer.classList.remove('hidden');
+      } else {
+        emptyState.classList.remove('hidden');
+      }
+    })
+    .catch(error => {
+      console.error('Error loading groups:', error);
+      loadingState.classList.add('hidden');
+      emptyState.classList.remove('hidden');
+    });
+}
+
+function renderGroups() {
+  const container = document.getElementById('groups-container');
+  container.innerHTML = groups.map(group => `
+    <div class="group-card">
+      <div class="flex items-start justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center" style="background-color: ${group.color || '#3B82F6'}20">
+            <span class="material-symbols-outlined" style="color: ${group.color || '#3B82F6'}">folder</span>
+          </div>
+          <div>
+            <h3 class="font-semibold text-gray-900">${escapeHtml(group.name)}</h3>
+            <p class="text-sm text-gray-500">${group.contact_count || 0} contacts</p>
+          </div>
+        </div>
+        <button onclick="deleteGroup(${group.id})" class="text-gray-400 hover:text-red-500 transition-colors p-1">
+          <span class="material-symbols-outlined text-xl">delete</span>
+        </button>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+        <p class="text-xs text-gray-400">Created: ${formatDate(group.created_at)}</p>
+        ${group.description ? `<p class="text-xs text-gray-500 truncate max-w-[150px]" title="${escapeHtml(group.description)}">${escapeHtml(group.description)}</p>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+async function deleteGroup(groupId) {
+  const confirmed = await showConfirm('Delete Group', 'Are you sure you want to delete this group? This action cannot be undone.');
+  if (!confirmed) return;
+  
+  fetch(`/api/groups/${groupId}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' }
+  })
+  .then(response => response.json())
+  .then(data => {
+    if (data.success) {
+      loadGroups(); // Reload list
+      showToast('Group deleted successfully!', 'success');
+    } else {
+      showToast(data.message || 'Failed to delete group', 'error');
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    showToast('An error occurred while deleting the group', 'error');
+  });
+}
+
+function formatDate(dateStr) {
+  if (!dateStr) return 'Unknown';
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+}
+
+function escapeHtml(text) {
+  const div = document.createElement('div');
+  div.textContent = text;
+  return div.innerHTML;
+}
+
+async function handleLogout() {
+  const confirmed = await showConfirm('Logout', 'Are you sure you want to logout?', true);
+  if (confirmed) {
+    fetch('/api/logout', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      window.location.href = '/login';
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      window.location.href = '/login';
+    });
+  }
+}
+</script>
+</body></html>

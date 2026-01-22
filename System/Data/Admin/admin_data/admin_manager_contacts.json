@@ -1,0 +1,130 @@
+﻿[
+    {
+        "id":  1,
+        "name":  "Phạm Đức Vân",
+        "phone":  "0967173752",
+        "group_id":  null,
+        "email":  "phamdứcvan@gmail.com",
+        "address":  "683 Điện Biên Phủ, Q.3, Hà Nội"
+    },
+    {
+        "id":  2,
+        "name":  "Vũ Thanh Cường",
+        "phone":  "0941807667",
+        "group_id":  null,
+        "email":  "vuthanhcuờng@email.com",
+        "address":  "44 Điện Biên Phủ, Q.1, Hà Nội"
+    },
+    {
+        "id":  3,
+        "name":  "Bùi Thanh Sơn",
+        "phone":  "0932599010",
+        "group_id":  2,
+        "email":  "buithanhson@email.com",
+        "address":  "495 Trần Hưng Đạo, Q.3, Đà Nẵng"
+    },
+    {
+        "id":  4,
+        "name":  "Nguyễn Minh Nga",
+        "phone":  "0942079101",
+        "group_id":  1,
+        "email":  "nguyễnminhnga@gmail.com",
+        "address":  "358 Nguyễn Huệ, Q.1, Hà Nội"
+    },
+    {
+        "id":  5,
+        "name":  "Phan Thanh Giang",
+        "phone":  "0969237882",
+        "group_id":  null,
+        "email":  "phanthanhgiang@yahoo.com",
+        "address":  "240 Lê Duẩn, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  6,
+        "name":  "Vũ Văn Khoa",
+        "phone":  "0973284846",
+        "group_id":  4,
+        "email":  "vuvankhoa@email.com",
+        "address":  "513 Lý Thường Kiệt, Q.Bình Thạnh, Hà Nội"
+    },
+    {
+        "id":  7,
+        "name":  "Vũ Đức Vân",
+        "phone":  "0947666431",
+        "group_id":  null,
+        "email":  "vudứcvan@yahoo.com",
+        "address":  "319 Nguyễn Huệ, Q.3, TP.HCM"
+    },
+    {
+        "id":  8,
+        "name":  "Phạm Minh Cường",
+        "phone":  "0916835221",
+        "group_id":  null,
+        "email":  "phamminhcuờng@gmail.com",
+        "address":  "548 Nguyễn Huệ, Q.1, Hà Nội"
+    },
+    {
+        "id":  9,
+        "name":  "Phan Thu Cường",
+        "phone":  "0923935957",
+        "group_id":  4,
+        "email":  "phanthucuờng@gmail.com",
+        "address":  "848 Điện Biên Phủ, Q.3, Hà Nội"
+    },
+    {
+        "id":  10,
+        "name":  "Lê Đức Sơn",
+        "phone":  "0941169954",
+        "group_id":  3,
+        "email":  "ledứcson@yahoo.com",
+        "address":  "93 Điện Biên Phủ, Q.3, TP.HCM"
+    },
+    {
+        "id":  11,
+        "name":  "Đặng Thanh Khoa",
+        "phone":  "0970029278",
+        "group_id":  2,
+        "email":  "dặngthanhkhoa@email.com",
+        "address":  "385 Hai Bà Trưng, Q.Bình Thạnh, Hà Nội"
+    },
+    {
+        "id":  12,
+        "name":  "Hoàng Thu An",
+        "phone":  "0974388504",
+        "group_id":  1,
+        "email":  "hoangthuan@email.com",
+        "address":  "327 Trần Hưng Đạo, Q.1, Hà Nội"
+    },
+    {
+        "id":  13,
+        "name":  "Đặng Minh Giang",
+        "phone":  "0961773768",
+        "group_id":  null,
+        "email":  "dặngminhgiang@yahoo.com",
+        "address":  "909 Lý Thường Kiệt, Q.Bình Thạnh, Hà Nội"
+    },
+    {
+        "id":  14,
+        "name":  "Nguyễn Hoàng Phương",
+        "phone":  "0963898534",
+        "group_id":  1,
+        "email":  "nguyễnhoangphuong@yahoo.com",
+        "address":  "579 Lê Lợi, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  15,
+        "name":  "Đặng Đức An",
+        "phone":  "0975389003",
+        "group_id":  null,
+        "email":  "dặngdứcan@email.com",
+        "address":  "111 Hai Bà Trưng, Q.3, Hà Nội"
+    },
+    {
+        "id":  16,
+        "name":  "Bùi Thanh Giang",
+        "phone":  "0928344704",
+        "group_id":  null,
+        "email":  "buithanhgiang@gmail.com",
+        "address":  "456 Nguyễn Huệ, Q.1, Hà Nội"
+    }
+]

@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Phạm Minh Tuấn",
+    "phone": "0938765432",
+    "email": "phamminhtuan@email.vn",
+    "address": "12 Lê Duẩn, Quận 1, TP.HCM",
+    "company": "Công ty TNHH Đầu tư",
+    "notes": "Nhà đầu tư - quan trọng",
+    "category": "work"
+  },
+  {
+    "id": 2,
+    "name": "Hoàng Thị Mai",
+    "phone": "0927654321",
+    "email": "hoangmai88@gmail.com",
+    "address": "34 Hai Bà Trưng, Quận 3, TP.HCM",
+    "company": "",
+    "notes": "Chị gái",
+    "category": "family"
+  },
+  {
+    "id": 3,
+    "name": "Vũ Đức Thắng",
+    "phone": "0916543210",
+    "email": "vuducthang@work.vn",
+    "address": "56 Nguyễn Thị Minh Khai, Quận 1, TP.HCM",
+    "company": "Thắng Design Studio",
+    "notes": "Designer chuyên nghiệp",
+    "category": "work"
+  },
+  {
+    "id": 4,
+    "name": "Đỗ Thị Lan",
+    "phone": "0905432109",
+    "email": "dothilan@company.com",
+    "address": "78 Võ Văn Tần, Quận 3, TP.HCM",
+    "company": "LAN Marketing",
+    "notes": "Khách hàng tiềm năng",
+    "category": "work"
+  },
+  {
+    "id": 5,
+    "name": "Tú",
+    "phone": "0786787742",
+    "email": "hoaitu162@gmail.com",
+    "address": "123 đường sét",
+    "group": "work",
+    "notes": "Trai đẹp Long An",
+    "avatar": "",
+    "created_at": "2026-01-16T07:16:57.577300",
+    "updated_at": "2026-01-16T07:16:57.577325"
+  }
+]

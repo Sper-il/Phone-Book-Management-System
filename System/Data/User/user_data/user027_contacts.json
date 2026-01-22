@@ -1,0 +1,162 @@
+﻿[
+    {
+        "id":  1,
+        "name":  "Hoàng Thu Yến",
+        "phone":  "0984403528",
+        "group_id":  4,
+        "email":  "hoangthuyến@gmail.com",
+        "address":  "20 Lê Văn Sỹ, Q.Tân Bình, Nha Trang"
+    },
+    {
+        "id":  2,
+        "name":  "Vũ Bảo Uy",
+        "phone":  "0918571641",
+        "group_id":  2,
+        "email":  "vubaouy@yahoo.com",
+        "address":  "656 Phan Đăng Lưu, Thủ Đức, Cần Thơ"
+    },
+    {
+        "id":  3,
+        "name":  "Trần Thị Bình",
+        "phone":  "0945793473",
+        "group_id":  3,
+        "email":  "trầnthibinh@gmail.com",
+        "address":  "783 Cộng Hòa, Q.3, Nha Trang"
+    },
+    {
+        "id":  4,
+        "name":  "Vũ Hữu Bình",
+        "phone":  "0962530312",
+        "group_id":  3,
+        "email":  "vuhữubinh@gmail.com",
+        "address":  "407 Cộng Hòa, Q.1, TP.HCM"
+    },
+    {
+        "id":  5,
+        "name":  "Võ Văn Long",
+        "phone":  "0920218588",
+        "group_id":  3,
+        "email":  "vovanlong@email.com",
+        "address":  "924 Nguyễn Huệ, Q.Tân Phú, TP.HCM"
+    },
+    {
+        "id":  6,
+        "name":  "Ngô Đức Đạt",
+        "phone":  "0964271450",
+        "group_id":  null,
+        "email":  "ngodứcdat@yahoo.com",
+        "address":  "393 Lý Thường Kiệt, Q.1, Hà Nội"
+    },
+    {
+        "id":  7,
+        "name":  "Dương Hữu Nga",
+        "phone":  "0949058474",
+        "group_id":  3,
+        "email":  "duonghữunga@hotmail.com",
+        "address":  "639 Pasteur, Q.Phú Nhuận, TP.HCM"
+    },
+    {
+        "id":  8,
+        "name":  "Mai Bảo An",
+        "phone":  "0913487339",
+        "group_id":  1,
+        "email":  "maibaoan@hotmail.com",
+        "address":  "573 Lê Văn Sỹ, Q.Tân Phú, Nha Trang"
+    },
+    {
+        "id":  9,
+        "name":  "Hồ Đức Hải",
+        "phone":  "0924689885",
+        "group_id":  1,
+        "email":  "hồdứchai@yahoo.com",
+        "address":  "416 Tôn Đức Thắng, Thủ Đức, Huế"
+    },
+    {
+        "id":  10,
+        "name":  "Mai Công Bình",
+        "phone":  "0994829226",
+        "group_id":  1,
+        "email":  "maicongbinh@hotmail.com",
+        "address":  "797 Lê Duẩn, Q.1, Huế"
+    },
+    {
+        "id":  11,
+        "name":  "Đặng Văn Tú",
+        "phone":  "0950047390",
+        "group_id":  null,
+        "email":  "dặngvantu@hotmail.com",
+        "address":  "78 Lý Thường Kiệt, Q.10, Huế"
+    },
+    {
+        "id":  12,
+        "name":  "Tạ Bảo Phúc",
+        "phone":  "0951592693",
+        "group_id":  3,
+        "email":  "tabaophuc@yahoo.com",
+        "address":  "942 Tôn Đức Thắng, Q.Tân Phú, Hà Nội"
+    },
+    {
+        "id":  13,
+        "name":  "Chu Như Minh",
+        "phone":  "0913232748",
+        "group_id":  1,
+        "email":  "chunhuminh@yahoo.com",
+        "address":  "853 Lý Thường Kiệt, Q.Tân Phú, TP.HCM"
+    },
+    {
+        "id":  14,
+        "name":  "Trương Tuấn Thu",
+        "phone":  "0991310909",
+        "group_id":  null,
+        "email":  "truongtuấnthu@gmail.com",
+        "address":  "160 Phan Đăng Lưu, Q.10, TP.HCM"
+    },
+    {
+        "id":  15,
+        "name":  "Tô Thanh An",
+        "phone":  "0934127580",
+        "group_id":  null,
+        "email":  "tothanhan@email.com",
+        "address":  "943 Điện Biên Phủ, Q.Tân Bình, Đà Nẵng"
+    },
+    {
+        "id":  16,
+        "name":  "Bùi Hữu Tâm",
+        "phone":  "0918259237",
+        "group_id":  null,
+        "email":  "buihữutam@email.com",
+        "address":  "585 Phan Đăng Lưu, Q.3, TP.HCM"
+    },
+    {
+        "id":  17,
+        "name":  "Trương Minh Phương",
+        "phone":  "0982115113",
+        "group_id":  2,
+        "email":  "truongminhphuong@yahoo.com",
+        "address":  "408 Cộng Hòa, Q.Tân Phú, Hà Nội"
+    },
+    {
+        "id":  18,
+        "name":  "Hồ Thu Vân",
+        "phone":  "0948439304",
+        "group_id":  1,
+        "email":  "hồthuvan@email.com",
+        "address":  "551 Nam Kỳ Khởi Nghĩa, Q.1, Vũng Tàu"
+    },
+    {
+        "id":  19,
+        "name":  "Dương Tuấn Sơn",
+        "phone":  "0969329282",
+        "group_id":  null,
+        "email":  "duongtuấnson@hotmail.com",
+        "address":  "160 Lê Văn Sỹ, Q.10, Cần Thơ"
+    },
+    {
+        "id":  20,
+        "name":  "Nguyễn Bảo Hải",
+        "phone":  "0936955281",
+        "group_id":  2,
+        "email":  "nguyễnbaohai@hotmail.com",
+        "address":  "165 Nam Kỳ Khởi Nghĩa, Q.1, TP.HCM"
+    }
+]

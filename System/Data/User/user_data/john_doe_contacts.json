@@ -1,0 +1,78 @@
+[
+  {
+    "id": 1,
+    "name": "Alice Johnson",
+    "phone": "0987654321",
+    "email": "alice.johnson@email.com",
+    "address": "123 Main Street, District 2, HCMC",
+    "company": "Tech Solutions Inc",
+    "notes": "Project manager - important contact",
+    "category": "work"
+  },
+  {
+    "id": 2,
+    "name": "Bob Wilson",
+    "phone": "0976543210",
+    "email": "bob.wilson@gmail.com",
+    "address": "456 Park Avenue, District 1, HCMC",
+    "company": "",
+    "notes": "Tennis club member",
+    "category": "personal"
+  },
+  {
+    "id": 3,
+    "name": "Carol Davis",
+    "phone": "0965432109",
+    "email": "carol.d@company.com",
+    "address": "789 Business Road, District 3, HCMC",
+    "company": "Marketing Plus",
+    "notes": "Marketing consultant",
+    "category": "work"
+  },
+  {
+    "id": 4,
+    "name": "David Brown",
+    "phone": "0954321098",
+    "email": "david.brown@email.com",
+    "address": "321 Oak Street, District 7, HCMC",
+    "company": "Brown & Associates",
+    "notes": "Legal advisor",
+    "category": "work"
+  },
+  {
+    "id": 5,
+    "name": "Emma Thompson",
+    "phone": "0943210987",
+    "email": "emma.t@gmail.com",
+    "address": "654 Elm Avenue, District 2, HCMC",
+    "company": "",
+    "notes": "Neighbor and friend",
+    "category": "personal"
+  },
+  {
+    "id": 6,
+    "name": "Tú",
+    "phone": "0786787742",
+    "phone_normalized": "0786787742",
+    "email": "",
+    "address": "",
+    "group": "vv",
+    "notes": "",
+    "avatar": "",
+    "created_at": "2026-01-22T15:53:40.000601",
+    "updated_at": "2026-01-22T15:53:40.000635"
+  },
+  {
+    "id": 7,
+    "name": "vv",
+    "phone": "0786787744",
+    "phone_normalized": "0786787744",
+    "email": "",
+    "address": "",
+    "group": "",
+    "notes": "",
+    "avatar": "",
+    "created_at": "2026-01-22T16:15:41.552105",
+    "updated_at": "2026-01-22T16:15:41.552129"
+  }
+]

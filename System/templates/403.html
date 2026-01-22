@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>403 - Access Denied</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#136dec',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="min-h-screen flex items-center justify-center px-4">
+        <div class="max-w-md w-full text-center">
+            <!-- Icon -->
+            <div class="inline-flex items-center justify-center w-24 h-24 bg-red-100 rounded-full mb-6">
+                <span class="material-symbols-outlined text-red-600" style="font-size: 64px;">block</span>
+            </div>
+            
+            <!-- Title -->
+            <h1 class="text-4xl font-bold text-gray-900 mb-3">403</h1>
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">Access Denied</h2>
+            
+            <!-- Message -->
+            <p class="text-gray-600 mb-2">
+                You do not have permission to access this page.
+            </p>
+            <p class="text-gray-600 mb-8">
+                This page is only available for Admin or authorized Users.
+            </p>
+            
+            <!-- Actions -->
+            <div class="space-y-3">
+                <a href="/" class="inline-flex items-center justify-center w-full px-6 py-3 bg-primary hover:bg-blue-700 text-white rounded-lg transition-colors font-medium">
+                    <span class="material-symbols-outlined mr-2">home</span>
+                    Go to Home
+                </a>
+                
+                <a href="/logout" class="inline-flex items-center justify-center w-full px-6 py-3 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors font-medium">
+                    <span class="material-symbols-outlined mr-2">logout</span>
+                    Logout
+                </a>
+            </div>
+            
+            <!-- Info -->
+            <div class="mt-8 p-4 bg-blue-50 rounded-lg border border-blue-200">
+                <div class="flex items-start text-left">
+                    <span class="material-symbols-outlined text-blue-600 mr-2 flex-shrink-0">info</span>
+                    <div class="text-sm text-blue-800">
+                        <p class="font-semibold mb-1">System Permissions:</p>
+                        <ul class="list-disc list-inside space-y-1 text-blue-700">
+                            <li><strong>Admin</strong>: Access Admin Panel (/admin/dashboard)</li>
+                            <li><strong>User</strong>: Access User Dashboard (/dashboard)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

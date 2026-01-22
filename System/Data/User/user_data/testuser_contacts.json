@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "Test Contact 1",
+    "phone": "0900000001",
+    "email": "test1@test.com",
+    "address": "Test Address 1",
+    "company": "Test Company",
+    "notes": "This is a test contact",
+    "category": "work"
+  },
+  {
+    "id": 2,
+    "name": "Test Contact 2",
+    "phone": "0900000002",
+    "email": "test2@test.com",
+    "address": "Test Address 2",
+    "company": "",
+    "notes": "Another test contact",
+    "category": "personal"
+  }
+]

@@ -1,21 +1,60 @@
 <!doctype html>
-<html lang="vi">
+<html class="light" lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>UI - User Pages</title>
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>ContactHub - Dashboard</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#136dec",
+            "background": "#fcfcfc",
+            "sidebar": "#f8f9fa",
+            "border-color": "#eeeeee"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"]
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
 </head>
-<body class="min-h-screen bg-gray-50 flex items-center justify-center p-6">
-  <div class="w-full max-w-xl bg-white rounded-xl shadow-md p-8 space-y-6">
-    <h1 class="text-2xl font-bold text-gray-800">User UI - Index</h1>
-    <p class="text-sm text-gray-500">Click để mở từng màn hình (server tĩnh phải chạy từ System/templates).</p>
+<body class="min-h-screen bg-background font-sans antialiased flex items-center justify-center p-6">
+  <div class="w-full max-w-xl bg-white rounded-xl shadow-lg p-8 space-y-6 border border-border-color">
+    <div class="text-center">
+      <h1 class="text-3xl font-bold text-gray-800 mb-2">ContactHub</h1>
+      <p class="text-sm text-gray-600">Quick access to all features</p>
+    </div>
 
     <div class="space-y-3">
-      <a class="block w-full text-center bg-blue-600 text-white py-3 rounded-md" href="/dashboard1">Contact List (Dashboard 1)</a>
-      <a class="block w-full text-center bg-green-600 text-white py-3 rounded-md" href="/add-contact">Add Contact (Modal)</a>
-      <a class="block w-full text-center bg-purple-600 text-white py-3 rounded-md" href="/dashboard2">Group Management (Dashboard 2)</a>
-      <a class="block w-full text-center bg-orange-600 text-white py-3 rounded-md" href="/dashboard3">Add New Group (Dashboard 3)</a>
+      <a class="flex items-center justify-between w-full text-left bg-primary hover:bg-blue-700 text-white py-4 px-6 rounded-lg transition-colors shadow-sm group" href="/dashboard">
+        <span class="font-semibold">Contact List</span>
+        <span class="material-symbols-outlined">arrow_forward</span>
+      </a>
+      <a class="flex items-center justify-between w-full text-left bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-lg transition-colors shadow-sm group" href="/add-contact">
+        <span class="font-semibold">Add Contact</span>
+        <span class="material-symbols-outlined">add</span>
+      </a>
+      <a class="flex items-center justify-between w-full text-left bg-purple-600 hover:bg-purple-700 text-white py-4 px-6 rounded-lg transition-colors shadow-sm group" href="/groups">
+        <span class="font-semibold">Group Management</span>
+        <span class="material-symbols-outlined">group</span>
+      </a>
+      <a class="flex items-center justify-between w-full text-left bg-orange-600 hover:bg-orange-700 text-white py-4 px-6 rounded-lg transition-colors shadow-sm group" href="/add-group">
+        <span class="font-semibold">Add New Group</span>
+        <span class="material-symbols-outlined">create_new_folder</span>
+      </a>
     </div>
 
     <p class="text-xs text-gray-400">Lưu ý: các liên kết dùng đường dẫn tương đối so với folder templates.</p>

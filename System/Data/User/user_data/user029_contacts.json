@@ -1,0 +1,306 @@
+﻿[
+    {
+        "id":  1,
+        "name":  "Trương Thanh Quân",
+        "phone":  "0973360266",
+        "group_id":  1,
+        "email":  "truongthanhquan@email.com",
+        "address":  "554 Điện Biên Phủ, Q.10, Đà Nẵng"
+    },
+    {
+        "id":  2,
+        "name":  "Cao Thị Nga",
+        "phone":  "0993424564",
+        "group_id":  2,
+        "email":  "caothinga@hotmail.com",
+        "address":  "412 Hoàng Văn Thụ, Q.Tân Phú, Nha Trang"
+    },
+    {
+        "id":  3,
+        "name":  "Trương Hoàng Khoa",
+        "phone":  "0985489903",
+        "group_id":  4,
+        "email":  "truonghoangkhoa@hotmail.com",
+        "address":  "716 Pasteur, Q.Phú Nhuận, Vũng Tàu"
+    },
+    {
+        "id":  4,
+        "name":  "Lâm Hữu Xuân",
+        "phone":  "0979362782",
+        "group_id":  3,
+        "email":  "lamhữuxuan@hotmail.com",
+        "address":  "687 Lê Lợi, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  5,
+        "name":  "Đinh Hoàng Tú",
+        "phone":  "0916287070",
+        "group_id":  2,
+        "email":  "dinhhoangtu@yahoo.com",
+        "address":  "719 Lê Duẩn, Q.3, Huế"
+    },
+    {
+        "id":  6,
+        "name":  "Võ Thanh Ơi",
+        "phone":  "0997831560",
+        "group_id":  2,
+        "email":  "vothanhoi@email.com",
+        "address":  "246 Lý Thường Kiệt, Q.1, Nha Trang"
+    },
+    {
+        "id":  7,
+        "name":  "Lý Thanh Phúc",
+        "phone":  "0970852889",
+        "group_id":  null,
+        "email":  "lythanhphuc@yahoo.com",
+        "address":  "198 Lê Duẩn, Q.Tân Bình, Nha Trang"
+    },
+    {
+        "id":  8,
+        "name":  "Phạm Minh Phúc",
+        "phone":  "0923881960",
+        "group_id":  null,
+        "email":  "phamminhphuc@email.com",
+        "address":  "179 Lý Thường Kiệt, Thủ Đức, Vũng Tàu"
+    },
+    {
+        "id":  9,
+        "name":  "Lê Hữu Yến",
+        "phone":  "0946269523",
+        "group_id":  3,
+        "email":  "lehữuyến@gmail.com",
+        "address":  "415 Cộng Hòa, Q.Phú Nhuận, Huế"
+    },
+    {
+        "id":  10,
+        "name":  "Lê Đức Lan",
+        "phone":  "0912265254",
+        "group_id":  null,
+        "email":  "ledứclan@email.com",
+        "address":  "457 Lý Thường Kiệt, Q.1, Nha Trang"
+    },
+    {
+        "id":  11,
+        "name":  "Phan Hoàng Tâm",
+        "phone":  "0954396739",
+        "group_id":  null,
+        "email":  "phanhoangtam@email.com",
+        "address":  "319 Hoàng Văn Thụ, Thủ Đức, Nha Trang"
+    },
+    {
+        "id":  12,
+        "name":  "Nguyễn Như Xuân",
+        "phone":  "0948178138",
+        "group_id":  null,
+        "email":  "nguyễnnhuxuan@gmail.com",
+        "address":  "549 Tôn Đức Thắng, Q.Tân Phú, Huế"
+    },
+    {
+        "id":  13,
+        "name":  "Lâm Đức Phúc",
+        "phone":  "0978669264",
+        "group_id":  null,
+        "email":  "lamdứcphuc@gmail.com",
+        "address":  "998 Cách Mạng Tháng 8, Q.1, TP.HCM"
+    },
+    {
+        "id":  14,
+        "name":  "Phạm Thanh Em",
+        "phone":  "0985607202",
+        "group_id":  3,
+        "email":  "phamthanhem@yahoo.com",
+        "address":  "148 Lê Văn Sỹ, Q.10, Cần Thơ"
+    },
+    {
+        "id":  15,
+        "name":  "Lâm Đức Ơi",
+        "phone":  "0949706082",
+        "group_id":  4,
+        "email":  "lamdứcoi@gmail.com",
+        "address":  "373 Võ Văn Tần, Q.10, TP.HCM"
+    },
+    {
+        "id":  16,
+        "name":  "Lưu Minh Uy",
+        "phone":  "0961992021",
+        "group_id":  2,
+        "email":  "luuminhuy@yahoo.com",
+        "address":  "727 Hoàng Văn Thụ, Q.Phú Nhuận, Vũng Tàu"
+    },
+    {
+        "id":  17,
+        "name":  "Chu Như An",
+        "phone":  "0962761751",
+        "group_id":  2,
+        "email":  "chunhuan@hotmail.com",
+        "address":  "121 Nguyễn Đình Chiểu, Q.Tân Bình, Nha Trang"
+    },
+    {
+        "id":  18,
+        "name":  "Tạ Thế Sơn",
+        "phone":  "0973245083",
+        "group_id":  1,
+        "email":  "tathếson@yahoo.com",
+        "address":  "437 Pasteur, Thủ Đức, Cần Thơ"
+    },
+    {
+        "id":  19,
+        "name":  "Đỗ Tuấn Cường",
+        "phone":  "0955231853",
+        "group_id":  4,
+        "email":  "dỗtuấncuờng@hotmail.com",
+        "address":  "897 Nam Kỳ Khởi Nghĩa, Q.3, Vũng Tàu"
+    },
+    {
+        "id":  20,
+        "name":  "Võ Minh Vân",
+        "phone":  "0971703755",
+        "group_id":  null,
+        "email":  "vominhvan@gmail.com",
+        "address":  "720 Nguyễn Huệ, Q.5, Huế"
+    },
+    {
+        "id":  21,
+        "name":  "Chu Văn Bình",
+        "phone":  "0967691758",
+        "group_id":  null,
+        "email":  "chuvanbinh@email.com",
+        "address":  "889 Nguyễn Huệ, Q.1, Cần Thơ"
+    },
+    {
+        "id":  22,
+        "name":  "Tô Quốc Vân",
+        "phone":  "0995953771",
+        "group_id":  2,
+        "email":  "toquốcvan@hotmail.com",
+        "address":  "776 Trần Hưng Đạo, Q.3, TP.HCM"
+    },
+    {
+        "id":  23,
+        "name":  "Đỗ Đức Sơn",
+        "phone":  "0984766967",
+        "group_id":  3,
+        "email":  "dỗdứcson@gmail.com",
+        "address":  "579 Nguyễn Huệ, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  24,
+        "name":  "Đinh Bảo Nam",
+        "phone":  "0921673644",
+        "group_id":  3,
+        "email":  "dinhbaonam@email.com",
+        "address":  "563 Trần Hưng Đạo, Q.Phú Nhuận, TP.HCM"
+    },
+    {
+        "id":  25,
+        "name":  "Đinh Hữu Khoa",
+        "phone":  "0937178982",
+        "group_id":  1,
+        "email":  "dinhhữukhoa@gmail.com",
+        "address":  "308 Lý Thường Kiệt, Q.Tân Bình, Nha Trang"
+    },
+    {
+        "id":  26,
+        "name":  "Lê Thế Khanh",
+        "phone":  "0991005604",
+        "group_id":  null,
+        "email":  "lethếkhanh@hotmail.com",
+        "address":  "633 Điện Biên Phủ, Q.5, Vũng Tàu"
+    },
+    {
+        "id":  27,
+        "name":  "Nguyễn Hữu Lan",
+        "phone":  "0966069386",
+        "group_id":  1,
+        "email":  "nguyễnhữulan@hotmail.com",
+        "address":  "208 Cách Mạng Tháng 8, Q.1, Cần Thơ"
+    },
+    {
+        "id":  28,
+        "name":  "Lê Anh Yến",
+        "phone":  "0910639369",
+        "group_id":  3,
+        "email":  "leanhyến@email.com",
+        "address":  "732 Lê Duẩn, Q.1, Đà Nẵng"
+    },
+    {
+        "id":  29,
+        "name":  "Trần Thế Nga",
+        "phone":  "0959526222",
+        "group_id":  null,
+        "email":  "trầnthếnga@yahoo.com",
+        "address":  "947 Lê Văn Sỹ, Q.Phú Nhuận, Nha Trang"
+    },
+    {
+        "id":  30,
+        "name":  "Lâm Thanh Xuân",
+        "phone":  "0914094807",
+        "group_id":  1,
+        "email":  "lamthanhxuan@yahoo.com",
+        "address":  "209 Tôn Đức Thắng, Q.1, Vũng Tàu"
+    },
+    {
+        "id":  31,
+        "name":  "Đỗ Hữu Thu",
+        "phone":  "0915543300",
+        "group_id":  1,
+        "email":  "dỗhữuthu@email.com",
+        "address":  "279 Cách Mạng Tháng 8, Q.Tân Bình, Đà Nẵng"
+    },
+    {
+        "id":  32,
+        "name":  "Hoàng Công Nga",
+        "phone":  "0935831661",
+        "group_id":  null,
+        "email":  "hoangcongnga@hotmail.com",
+        "address":  "128 Điện Biên Phủ, Q.5, Hà Nội"
+    },
+    {
+        "id":  33,
+        "name":  "Mai Đức Nam",
+        "phone":  "0982191691",
+        "group_id":  3,
+        "email":  "maidứcnam@hotmail.com",
+        "address":  "14 Nam Kỳ Khởi Nghĩa, Q.1, Nha Trang"
+    },
+    {
+        "id":  34,
+        "name":  "Trần Văn Quân",
+        "phone":  "0974897485",
+        "group_id":  2,
+        "email":  "trầnvanquan@email.com",
+        "address":  "471 Pasteur, Q.Tân Bình, Huế"
+    },
+    {
+        "id":  35,
+        "name":  "Dương Công Nam",
+        "phone":  "0918954417",
+        "group_id":  2,
+        "email":  "duongcongnam@email.com",
+        "address":  "92 Lê Văn Sỹ, Thủ Đức, Hà Nội"
+    },
+    {
+        "id":  36,
+        "name":  "Đặng Hoàng Phương",
+        "phone":  "0978965470",
+        "group_id":  4,
+        "email":  "dặnghoangphuong@gmail.com",
+        "address":  "729 Lê Lợi, Q.Phú Nhuận, Cần Thơ"
+    },
+    {
+        "id":  37,
+        "name":  "Bùi Như Long",
+        "phone":  "0921409512",
+        "group_id":  4,
+        "email":  "buinhulong@email.com",
+        "address":  "897 Hoàng Văn Thụ, Q.Tân Bình, Đà Nẵng"
+    },
+    {
+        "id":  38,
+        "name":  "Hoàng Tuấn Sơn",
+        "phone":  "0951808173",
+        "group_id":  2,
+        "email":  "hoangtuấnson@gmail.com",
+        "address":  "926 Cộng Hòa, Q.Tân Phú, Đà Nẵng"
+    }
+]

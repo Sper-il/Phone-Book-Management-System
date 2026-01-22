@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Phone Book Management</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#136dec',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex items-center justify-center px-4 font-sans">
+    <div class="w-full max-w-md">
+        <!-- Card -->
+        <div class="bg-white rounded-2xl shadow-2xl overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 px-8 py-8 text-center">
+                <div class="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-full mb-4">
+                    <span class="material-symbols-outlined text-white text-5xl">admin_panel_settings</span>
+                </div>
+                <h1 class="text-3xl font-bold text-white mb-2">Admin Login</h1>
+                <p class="text-blue-100 text-sm">Phone Book Management System</p>
+            </div>
+            
+            <!-- Form -->
+            <div class="px-8 py-8">
+                <!-- Error Alert -->
+                <div id="error-alert" class="hidden mb-4 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3">
+                    <span class="material-symbols-outlined text-red-600 text-xl">error</span>
+                    <div class="flex-1">
+                        <p class="text-sm font-semibold text-red-800" id="error-title">Error</p>
+                        <p class="text-sm text-red-700 mt-1" id="error-message"></p>
+                    </div>
+                    <button onclick="closeError()" class="text-red-400 hover:text-red-600">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+
+                <!-- Lockout Alert -->
+                <div id="lockout-alert" class="hidden mb-4 p-4 rounded-lg bg-orange-50 border border-orange-200">
+                    <div class="flex items-start gap-3">
+                        <span class="material-symbols-outlined text-orange-600 text-xl">lock_clock</span>
+                        <div class="flex-1">
+                            <p class="text-sm font-semibold text-orange-800">Access Locked</p>
+                            <p class="text-sm text-orange-700 mt-1">
+                                Too many failed attempts. Please try again in <span id="countdown" class="font-bold">60</span> seconds.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Info Banner -->
+                <div class="mb-6 p-4 bg-red-50 rounded-lg border border-red-200">
+                    <div class="flex items-start">
+                        <span class="material-symbols-outlined text-red-600 mr-2 flex-shrink-0">warning</span>
+                        <div class="text-sm text-red-800">
+                            <p class="font-semibold mb-1">Restricted Access</p>
+                            <p class="text-red-700">Chỉ dành cho quản trị viên. Unauthorized access will be logged.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="admin-login-form" class="space-y-5">
+                    <!-- Username -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">badge</span>
+                            Admin Username
+                        </label>
+                        <input 
+                            type="text" 
+                            id="admin-username"
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 outline-none transition-all"
+                            placeholder="Enter admin username"
+                            required
+                        >
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">
+                            <span class="material-symbols-outlined text-lg align-middle mr-1">lock</span>
+                            Password
+                        </label>
+                        <div class="relative">
+                            <input 
+                                type="password" 
+                                id="admin-password"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500/20 focus:border-purple-500 outline-none transition-all pr-12"
+                                placeholder="Enter admin password"
+                                required
+                            >
+                            <button 
+                                type="button"
+                                onclick="togglePassword()"
+                                class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                            >
+                                <span id="password-icon" class="material-symbols-outlined">visibility</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Remember Me -->
+                    <div class="flex items-center">
+                        <input 
+                            type="checkbox" 
+                            id="remember"
+                            class="w-4 h-4 rounded border-gray-300 text-purple-600 focus:ring-purple-500"
+                        >
+                        <label for="remember" class="ml-2 text-sm text-gray-600">
+                            Keep me logged in
+                        </label>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button 
+                        type="submit"
+                        class="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white py-3 rounded-lg font-semibold text-base transition-all shadow-lg hover:shadow-xl active:scale-[0.98] flex items-center justify-center"
+                    >
+                        <span class="material-symbols-outlined mr-2">login</span>
+                        Login as Admin
+                    </button>
+                </form>
+
+                <!-- Divider -->
+                <div class="my-6 flex items-center">
+                    <div class="flex-1 border-t border-gray-300"></div>
+                    <span class="px-4 text-sm text-gray-500">or</span>
+                    <div class="flex-1 border-t border-gray-300"></div>
+                </div>
+
+                <!-- User Login Link -->
+                <a 
+                    href="/login"
+                    class="block w-full text-center py-3 border-2 border-gray-300 hover:border-primary hover:bg-gray-50 text-gray-700 rounded-lg font-medium transition-all"
+                >
+                    <span class="material-symbols-outlined text-lg align-middle mr-1">person</span>
+                    Login as Regular User
+                </a>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="text-center mt-6 text-white/80 text-sm">
+            <p>© 2026 Phone Book Management System</p>
+            <p class="mt-1">Admin access only • All activities are monitored</p>
+        </div>
+    </div>
+
+    <script>
+        let failedAttempts = 0;
+        let isLocked = false;
+        let lockoutTimer = null;
+        let countdownInterval = null;
+
+        function showError(title, message) {
+            const errorAlert = document.getElementById('error-alert');
+            document.getElementById('error-title').textContent = title;
+            document.getElementById('error-message').textContent = message;
+            errorAlert.classList.remove('hidden');
+            
+            setTimeout(() => {
+                closeError();
+            }, 5000);
+        }
+
+        function closeError() {
+            document.getElementById('error-alert').classList.add('hidden');
+        }
+
+        function lockForm() {
+            isLocked = true;
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const usernameInput = document.getElementById('admin-username');
+            const passwordInput = document.getElementById('admin-password');
+            
+            submitBtn.disabled = true;
+            submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+            usernameInput.disabled = true;
+            passwordInput.disabled = true;
+            
+            document.getElementById('lockout-alert').classList.remove('hidden');
+            document.getElementById('error-alert').classList.add('hidden');
+            
+            let timeLeft = 60;
+            document.getElementById('countdown').textContent = timeLeft;
+            
+            countdownInterval = setInterval(() => {
+                timeLeft--;
+                document.getElementById('countdown').textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    unlockForm();
+                }
+            }, 1000);
+        }
+
+        function unlockForm() {
+            isLocked = false;
+            failedAttempts = 0;
+            
+            const submitBtn = document.querySelector('button[type="submit"]');
+            const usernameInput = document.getElementById('admin-username');
+            const passwordInput = document.getElementById('admin-password');
+            
+            submitBtn.disabled = false;
+            submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            usernameInput.disabled = false;
+            passwordInput.disabled = false;
+            
+            document.getElementById('lockout-alert').classList.add('hidden');
+            
+            if (countdownInterval) {
+                clearInterval(countdownInterval);
+            }
+        }
+        
+        function togglePassword() {
+            const passwordInput = document.getElementById('admin-password');
+            const icon = document.getElementById('password-icon');
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                icon.textContent = 'visibility_off';
+            } else {
+                passwordInput.type = 'password';
+                icon.textContent = 'visibility';
+            }
+        }
+
+        document.getElementById('admin-login-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            if (isLocked) {
+                return;
+            }
+            
+            const username = document.getElementById('admin-username').value.trim();
+            const password = document.getElementById('admin-password').value.trim();
+            
+            if (!username || !password) {
+                showError('Missing Information', 'Please enter both username and password.');
+                return;
+            }
+            
+            if (username.length < 3) {
+                showError('Invalid Username', 'Username must be at least 3 characters.');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showError('Invalid Password', 'Password must be at least 6 characters.');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        username: username,
+                        password: password
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    failedAttempts = 0;
+                    window.location.href = '/admin';
+                } else {
+                    failedAttempts++;
+                    
+                    if (failedAttempts >= 3) {
+                        lockForm();
+                    } else {
+                        const remainingAttempts = 3 - failedAttempts;
+                        showError(
+                            'Login Failed', 
+                            `${data.message || 'Invalid credentials'}. ${remainingAttempts} attempt(s) remaining.`
+                        );
+                    }
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showError('Connection Error', 'Unable to connect to the server. Please try again.');
+            }
+        });
+
+        // Allow Enter key to submit
+        document.getElementById('admin-password').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                document.getElementById('admin-login-form').dispatchEvent(new Event('submit'));
+            }
+        });
+    </script>
+</body>
+</html>

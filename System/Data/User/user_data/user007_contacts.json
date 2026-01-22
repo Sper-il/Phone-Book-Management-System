@@ -1,0 +1,202 @@
+[
+  {
+    "id": 1,
+    "name": "Nguyễn Văn An",
+    "phone": "0901234567",
+    "email": "nguyenvanan@gmail.com",
+    "address": "123 Lê Lợi, Q.1, TP.HCM",
+    "group_id": 1
+  },
+  {
+    "id": 2,
+    "name": "Trần Thị Bình",
+    "phone": "0912345678",
+    "email": "tranthibinh@yahoo.com",
+    "address": "456 Nguyễn Huệ, Q.1, TP.HCM",
+    "group_id": 1
+  },
+  {
+    "id": 3,
+    "name": "Lê Hoàng Cường",
+    "phone": "0923456789",
+    "email": "lehoangcuong@email.com",
+    "address": "789 Trần Hưng Đạo, Q.5, TP.HCM",
+    "group_id": 2
+  },
+  {
+    "id": 4,
+    "name": "Phạm Thị Diễm",
+    "phone": "0934567890",
+    "email": "phamthidiem@hotmail.com",
+    "address": "321 Hai Bà Trưng, Q.3, TP.HCM",
+    "group_id": 2
+  },
+  {
+    "id": 5,
+    "name": "Hoàng Văn Em",
+    "phone": "0945678901",
+    "email": "hoangvanem@gmail.com",
+    "address": "654 Lý Thường Kiệt, Q.10, TP.HCM",
+    "group_id": 3
+  },
+  {
+    "id": 6,
+    "name": "Vũ Thị Giang",
+    "phone": "0956789012",
+    "email": "vuthigiang@yahoo.com",
+    "address": "987 Cách Mạng Tháng 8, Q.3, TP.HCM",
+    "group_id": 3
+  },
+  {
+    "id": 7,
+    "name": "Đặng Văn Hùng",
+    "phone": "0967890123",
+    "email": "dangvanhung@email.com",
+    "address": "147 Võ Văn Tần, Q.3, TP.HCM",
+    "group_id": 4
+  },
+  {
+    "id": 8,
+    "name": "Bùi Thị Nga",
+    "phone": "0978901234",
+    "email": "buithinga@gmail.com",
+    "address": "258 Điện Biên Phủ, Q.Bình Thạnh, TP.HCM",
+    "group_id": 4
+  },
+  {
+    "id": 9,
+    "name": "Đinh Văn Khoa",
+    "phone": "0989012345",
+    "email": "dinhvankhoa@yahoo.com",
+    "address": "369 Phan Đăng Lưu, Q.Phú Nhuận, TP.HCM",
+    "group_id": null
+  },
+  {
+    "id": 10,
+    "name": "Mai Thị Lan",
+    "phone": "0990123456",
+    "email": "maithilan@email.com",
+    "address": "741 Lê Văn Sỹ, Q.Tân Bình, TP.HCM",
+    "group_id": null
+  },
+  {
+    "id": 11,
+    "name": "Tô Văn Minh",
+    "phone": "0901112222",
+    "email": "tovanminh@gmail.com",
+    "address": "852 Cộng Hòa, Q.Tân Bình, TP.HCM",
+    "group_id": 1
+  },
+  {
+    "id": 12,
+    "name": "Lý Thị Ngọc",
+    "phone": "0912223333",
+    "email": "lythingoc@yahoo.com",
+    "address": "963 Hoàng Văn Thụ, Q.Tân Bình, TP.HCM",
+    "group_id": 2
+  },
+  {
+    "id": 13,
+    "name": "Phan Văn Ơi",
+    "phone": "0923334444",
+    "email": "phanvanoi@email.com",
+    "address": "159 Nguyễn Thái Học, Q.1, TP.HCM",
+    "group_id": 3
+  },
+  {
+    "id": 14,
+    "name": "Cao Thị Phương",
+    "phone": "0934445555",
+    "email": "caothiphuong@gmail.com",
+    "address": "357 Pasteur, Q.3, TP.HCM",
+    "group_id": 4
+  },
+  {
+    "id": 15,
+    "name": "Dương Văn Quân",
+    "phone": "0945556666",
+    "email": "duongvanquan@yahoo.com",
+    "address": "486 Nam Kỳ Khởi Nghĩa, Q.3, TP.HCM",
+    "group_id": null
+  },
+  {
+    "id": 16,
+    "name": "Hà Thị Rạng",
+    "phone": "0956667777",
+    "email": "hathirang@email.com",
+    "address": "579 Đinh Tiên Hoàng, Q.1, TP.HCM",
+    "group_id": 1
+  },
+  {
+    "id": 17,
+    "name": "Trương Văn Sơn",
+    "phone": "0967778888",
+    "email": "truongvanson@gmail.com",
+    "address": "682 Lê Duẩn, Q.1, TP.HCM",
+    "group_id": 2
+  },
+  {
+    "id": 18,
+    "name": "Võ Thị Thu",
+    "phone": "0978889999",
+    "email": "vothithu@yahoo.com",
+    "address": "793 Nguyễn Đình Chiểu, Q.3, TP.HCM",
+    "group_id": 3
+  },
+  {
+    "id": 19,
+    "name": "Lâm Văn Uy",
+    "phone": "0989990000",
+    "email": "lamvanuy@email.com",
+    "address": "804 Bà Huyện Thanh Quan, Q.3, TP.HCM",
+    "group_id": 4
+  },
+  {
+    "id": 20,
+    "name": "Đỗ Thị Vân",
+    "phone": "0990001111",
+    "email": "dothivan@gmail.com",
+    "address": "915 Yersin, Q.1, TP.HCM",
+    "group_id": null
+  },
+  {
+    "id": 21,
+    "name": "Chu Văn Xuân",
+    "phone": "0901122334",
+    "email": "chuvanxuan@yahoo.com",
+    "address": "126 Tôn Đức Thắng, Q.1, TP.HCM",
+    "group_id": 1
+  },
+  {
+    "id": 22,
+    "name": "Ông Thị Yến",
+    "phone": "0912233445",
+    "email": "ongthiyen@email.com",
+    "address": "237 Nguyễn Bỉnh Khiêm, Q.1, TP.HCM",
+    "group_id": 2
+  },
+  {
+    "id": 23,
+    "name": "Tạ Văn Trung",
+    "phone": "0923344556",
+    "email": "tavantrung@gmail.com",
+    "address": "348 Phạm Ngọc Thạch, Q.3, TP.HCM",
+    "group_id": 3
+  },
+  {
+    "id": 24,
+    "name": "Ngô Thị Kim",
+    "phone": "0934455667",
+    "email": "ngothikim@yahoo.com",
+    "address": "459 Trường Chinh, Q.Tân Bình, TP.HCM",
+    "group_id": 4
+  },
+  {
+    "id": 25,
+    "name": "Lưu Văn Đạt",
+    "phone": "0945566778",
+    "email": "luuvandat@email.com",
+    "address": "560 Tân Sơn Nhì, Q.Tân Phú, TP.HCM",
+    "group_id": null
+  }
+]

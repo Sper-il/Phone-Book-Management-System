@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "name": "Tuấn Võ",
+    "phone": "123456789",
+    "phone_normalized": "123456789",
+    "email": "",
+    "address": "",
+    "group": "IT",
+    "notes": "",
+    "avatar": "",
+    "created_at": "2026-01-22T16:05:28.076072",
+    "updated_at": "2026-01-22T16:05:28.076090"
+  }
+]

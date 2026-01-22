@@ -1,0 +1,78 @@
+{
+  "admins": [
+    {
+      "username": "admin",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "email": "admin@phonebook.com",
+      "full_name": "System Administrator",
+      "role": "superadmin",
+      "created_at": "2024-01-01T00:00:00",
+      "last_login": "2026-01-22T16:01:52.742749",
+      "permissions": [
+        "view_users",
+        "delete_users",
+        "view_statistics",
+        "manage_system"
+      ]
+    },
+    {
+      "username": "admin_manager",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "email": "manager@phonebook.com",
+      "full_name": "Nguyễn Văn Quản Lý",
+      "role": "manager",
+      "created_at": "2024-02-15T10:00:00",
+      "last_login": "2026-01-10T14:30:00",
+      "permissions": [
+        "view_users",
+        "delete_users",
+        "view_statistics"
+      ]
+    },
+    {
+      "username": "admin_support",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "email": "support@phonebook.com",
+      "full_name": "Trần Thị Hỗ Trợ",
+      "role": "support",
+      "created_at": "2024-03-20T11:30:00",
+      "last_login": "2026-01-12T09:15:00",
+      "permissions": [
+        "view_users",
+        "view_statistics"
+      ]
+    },
+    {
+      "username": "admin_tech",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "email": "tech@phonebook.com",
+      "full_name": "Lê Văn Kỹ Thuật",
+      "role": "technical",
+      "created_at": "2024-04-10T13:00:00",
+      "last_login": "2026-01-14T16:45:00",
+      "permissions": [
+        "view_users",
+        "view_statistics",
+        "manage_system"
+      ]
+    },
+    {
+      "username": "admin_data",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "email": "data@phonebook.com",
+      "full_name": "Phạm Thị Dữ Liệu",
+      "role": "data_analyst",
+      "created_at": "2024-05-05T15:20:00",
+      "last_login": "2026-01-13T11:00:00",
+      "permissions": [
+        "view_users",
+        "view_statistics"
+      ]
+    }
+  ]
+}

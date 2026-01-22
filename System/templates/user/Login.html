@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Login | ContactHub</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#136dec",
+                        "background": "#fcfcfc",
+                        "sidebar": "#f8f9fa",
+                        "border-color": "#eeeeee"
+                    },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background font-sans min-h-screen flex flex-col antialiased">
+<!-- Top Navigation Bar (Simplified for Login) -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-border-color bg-white px-6 md:px-10 py-3">
+<div class="flex items-center gap-4 text-gray-800">
+<div class="size-6 text-primary">
+<svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M39.475 21.6262C40.358 21.4363 40.6863 21.5589 40.7581 21.5934C40.7876 21.655 40.8547 21.857 40.8082 22.3336C40.7408 23.0255 40.4502 24.0046 39.8572 25.2301C38.6799 27.6631 36.5085 30.6631 33.5858 33.5858C30.6631 36.5085 27.6632 38.6799 25.2301 39.8572C24.0046 40.4502 23.0255 40.7407 22.3336 40.8082C21.8571 40.8547 21.6551 40.7875 21.5934 40.7581C21.5589 40.6863 21.4363 40.358 21.6262 39.475C21.8562 38.4054 22.4689 36.9657 23.5038 35.2817C24.7575 33.2417 26.5497 30.9744 28.7621 28.762C30.9744 26.5497 33.2417 24.7574 35.2817 23.5037C36.9657 22.4689 38.4054 21.8562 39.475 21.6262ZM4.41189 29.2403L18.7597 43.5881C19.8813 44.7097 21.4027 44.9179 22.7217 44.7893C24.0585 44.659 25.5148 44.1631 26.9723 43.4579C29.9052 42.0387 33.2618 39.5667 36.4142 36.4142C39.5667 33.2618 42.0387 29.9052 43.4579 26.9723C44.1631 25.5148 44.659 24.0585 44.7893 22.7217C44.9179 21.4027 44.7097 19.8813 43.5881 18.7597L29.2403 4.41187C27.8527 3.02428 25.8765 3.02573 24.2861 3.36776C22.6081 3.72863 20.7334 4.58419 18.8396 5.74801C16.4978 7.18716 13.9881 9.18353 11.5858 11.5858C9.18354 13.988 7.18717 16.4978 5.74802 18.8396C4.58421 20.7334 3.72865 22.6081 3.36778 24.2861C3.02574 25.8765 3.02429 27.8527 4.41189 29.2403Z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div>
+<h2 class="text-gray-800 text-lg font-bold leading-tight tracking-tight">ContactHub</h2>
+</div>
+<div class="flex items-center gap-3">
+    <span class="text-sm text-gray-600 hidden md:inline">Don't have an account?</span>
+    <a href="/register" class="flex min-w-[84px] cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary/10 text-primary hover:bg-primary/20 text-sm font-semibold transition-colors">
+        Sign up
+    </a>
+</div>
+</header>
+<!-- Main Content -->
+<main class="flex-1 flex items-center justify-center p-4">
+<div class="w-full max-w-[440px] bg-white rounded-xl shadow-lg overflow-hidden border border-border-color">
+<div class="px-8 pt-10 pb-4 text-center">
+<h1 class="text-gray-800 tracking-tight text-3xl font-bold leading-tight mb-2">Welcome Back</h1>
+<p class="text-gray-600 text-base font-normal">Login for Users & Admins - Manage your contacts</p>
+</div>
+<div class="px-8 py-6">
+<!-- Error Alert -->
+<div id="error-alert" class="hidden mb-4 p-4 rounded-lg bg-red-50 border border-red-200 flex items-start gap-3">
+    <span class="material-symbols-outlined text-red-600 text-xl">error</span>
+    <div class="flex-1">
+        <p class="text-sm font-semibold text-red-800" id="error-title">Error</p>
+        <p class="text-sm text-red-700 mt-1" id="error-message"></p>
+    </div>
+    <button onclick="closeError()" class="text-red-400 hover:text-red-600">
+        <span class="material-symbols-outlined text-lg">close</span>
+    </button>
+</div>
+
+<!-- Lockout Alert -->
+<div id="lockout-alert" class="hidden mb-4 p-4 rounded-lg bg-orange-50 border border-orange-200">
+    <div class="flex items-start gap-3">
+        <span class="material-symbols-outlined text-orange-600 text-xl">lock_clock</span>
+        <div class="flex-1">
+            <p class="text-sm font-semibold text-orange-800">Tài khoản bị khóa tạm thời</p>
+            <p class="text-sm text-orange-700 mt-1">
+                Bạn đã nhập sai mật khẩu 3 lần. Vui lòng thử lại sau <span id="countdown" class="font-bold">60</span> giây.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Username Field -->
+<div class="flex flex-col gap-1 pb-5">
+<label class="flex flex-col">
+<p class="text-gray-800 text-sm font-semibold leading-normal pb-2">Username or Phone Number</p>
+<input id="username" class="form-input flex w-full rounded-lg text-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 bg-white focus:border-primary h-12 placeholder:text-gray-500 px-4 text-base font-normal" placeholder="Enter your username or phone" type="text" value=""/>
+</label>
+</div>
+<!-- Password Field -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center pb-2">
+<p class="text-gray-800 text-sm font-semibold leading-normal">Password</p>
+<a class="text-sm font-medium text-primary hover:underline" href="/forgot-password">Forgot password?</a>
+</div>
+<label class="flex w-full items-stretch rounded-lg group">
+<input id="password" class="form-input flex w-full min-w-0 flex-1 rounded-l-lg text-gray-800 focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-gray-300 bg-white focus:border-primary h-12 placeholder:text-gray-500 px-4 border-r-0 text-base font-normal" placeholder="Enter your password" type="password" value=""/>
+<div class="text-gray-600 flex border border-gray-300 bg-white items-center justify-center px-3 rounded-r-lg border-l-0 cursor-pointer hover:text-primary transition-colors">
+<span class="material-symbols-outlined" style="font-size: 20px;">visibility</span>
+</div>
+</label>
+</div>
+<!-- Remember Me -->
+<div class="flex items-center gap-2 py-6">
+<input class="w-4 h-4 rounded border-gray-300 text-primary focus:ring-primary" id="remember" type="checkbox"/>
+<label class="text-sm text-gray-600 font-medium cursor-pointer" for="remember">Stay logged in for 30 days</label>
+</div>
+<!-- Login Button -->
+<button type="button" onclick="handleLogin()" class="w-full bg-primary hover:bg-blue-700 text-white h-12 rounded-lg font-semibold text-base transition-all shadow-sm active:scale-[0.98]">
+    Log In
+</button>
+</div>
+</div>
+</main>
+<script>
+let failedAttempts = 0;
+let isLocked = false;
+let lockoutTimer = null;
+let countdownInterval = null;
+
+function showError(title, message) {
+    const errorAlert = document.getElementById('error-alert');
+    document.getElementById('error-title').textContent = title;
+    document.getElementById('error-message').textContent = message;
+    errorAlert.classList.remove('hidden');
+    
+    // Auto hide after 5 seconds
+    setTimeout(() => {
+        closeError();
+    }, 5000);
+}
+
+function closeError() {
+    document.getElementById('error-alert').classList.add('hidden');
+}
+
+function lockForm() {
+    isLocked = true;
+    const loginBtn = document.querySelector('button[onclick="handleLogin()"]');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    
+    loginBtn.disabled = true;
+    loginBtn.classList.add('opacity-50', 'cursor-not-allowed');
+    usernameInput.disabled = true;
+    passwordInput.disabled = true;
+    
+    document.getElementById('lockout-alert').classList.remove('hidden');
+    document.getElementById('error-alert').classList.add('hidden');
+    
+    let timeLeft = 60;
+    document.getElementById('countdown').textContent = timeLeft;
+    
+    countdownInterval = setInterval(() => {
+        timeLeft--;
+        document.getElementById('countdown').textContent = timeLeft;
+        
+        if (timeLeft <= 0) {
+            clearInterval(countdownInterval);
+            unlockForm();
+        }
+    }, 1000);
+}
+
+function unlockForm() {
+    isLocked = false;
+    failedAttempts = 0;
+    
+    const loginBtn = document.querySelector('button[onclick="handleLogin()"]');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+    
+    loginBtn.disabled = false;
+    loginBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+    usernameInput.disabled = false;
+    passwordInput.disabled = false;
+    
+    document.getElementById('lockout-alert').classList.add('hidden');
+    
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
+    }
+}
+
+function handleLogin() {
+    if (isLocked) {
+        return;
+    }
+    
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    
+    if (!username || !password) {
+        showError('Thiếu thông tin', 'Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.');
+        return;
+    }
+    
+    if (username.length < 3) {
+        showError('Tên đăng nhập không hợp lệ', 'Tên đăng nhập phải có ít nhất 3 ký tự.');
+        return;
+    }
+    
+    if (password.length < 6) {
+        showError('Mật khẩu không hợp lệ', 'Mật khẩu phải có ít nhất 6 ký tự.');
+        return;
+    }
+    
+    // Gọi API đăng nhập
+    fetch('/api/login', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // Reset failed attempts on success
+            failedAttempts = 0;
+            
+            // Redirect dựa trên loại user (admin hoặc user thường)
+            if (data.redirect) {
+                window.location.href = data.redirect;
+            } else if (data.is_admin) {
+                window.location.href = '/admin/dashboard';
+            } else {
+                window.location.href = '/dashboard';
+            }
+        } else {
+            failedAttempts++;
+            
+            if (failedAttempts >= 3) {
+                lockForm();
+            } else {
+                const remainingAttempts = 3 - failedAttempts;
+                showError(
+                    'Đăng nhập thất bại', 
+                    `${data.message || 'Tên đăng nhập hoặc mật khẩu không đúng'}. Còn ${remainingAttempts} lần thử.`
+                );
+            }
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showError('Lỗi kết nối', 'Không thể kết nối đến máy chủ. Vui lòng thử lại.');
+    });
+}
+
+// Cho phép nhấn Enter để đăng nhập
+document.getElementById('password').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        handleLogin();
+    }
+});
+
+// Toggle password visibility
+const passwordInput = document.getElementById('password');
+const toggleButton = document.querySelector('.material-symbols-outlined');
+
+if (toggleButton && passwordInput) {
+    toggleButton.parentElement.addEventListener('click', function() {
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            toggleButton.textContent = 'visibility_off';
+        } else {
+            passwordInput.type = 'password';
+            toggleButton.textContent = 'visibility';
+        }
+    });
+}
+</script>
+</body></html>

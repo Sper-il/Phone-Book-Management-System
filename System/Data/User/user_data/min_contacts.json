@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Nguyễn Văn An",
+    "phone": "0901234567",
+    "email": "nguyenvanan@email.com",
+    "address": "123 Đường Lê Lợi, Quận 1, TP.HCM",
+    "company": "Công ty ABC",
+    "notes": "Khách hàng VIP",
+    "category": "work"
+  },
+  {
+    "id": 2,
+    "name": "Trần Thị Bình",
+    "phone": "0912345678",
+    "email": "tranthib@gmail.com",
+    "address": "456 Nguyễn Huệ, Quận 1, TP.HCM",
+    "company": "",
+    "notes": "Bạn học cũ",
+    "category": "personal"
+  },
+  {
+    "id": 3,
+    "name": "Lê Hoàng Cường",
+    "phone": "0923456789",
+    "email": "lehcuong@company.vn",
+    "address": "789 Trần Hưng Đạo, Quận 5, TP.HCM",
+    "company": "XYZ Corp",
+    "notes": "Đối tác kinh doanh",
+    "category": "work"
+  }
+]

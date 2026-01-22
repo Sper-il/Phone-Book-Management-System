@@ -1,0 +1,146 @@
+﻿[
+    {
+        "id":  1,
+        "name":  "Phạm Hoàng Quân",
+        "phone":  "0929051783",
+        "group_id":  2,
+        "email":  "phamhoangquan@gmail.com",
+        "address":  "675 Lê Duẩn, Q.10, Hà Nội"
+    },
+    {
+        "id":  2,
+        "name":  "Phạm Thanh Phương",
+        "phone":  "0913864748",
+        "group_id":  4,
+        "email":  "phamthanhphuong@yahoo.com",
+        "address":  "963 Trần Hưng Đạo, Q.3, TP.HCM"
+    },
+    {
+        "id":  3,
+        "name":  "Võ Minh Giang",
+        "phone":  "0981887509",
+        "group_id":  4,
+        "email":  "vominhgiang@gmail.com",
+        "address":  "557 Võ Văn Tần, Q.1, Hà Nội"
+    },
+    {
+        "id":  4,
+        "name":  "Nguyễn Thu Giang",
+        "phone":  "0993943457",
+        "group_id":  1,
+        "email":  "nguyễnthugiang@gmail.com",
+        "address":  "683 Điện Biên Phủ, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  5,
+        "name":  "Phan Thu Dũng",
+        "phone":  "0950869727",
+        "group_id":  2,
+        "email":  "phanthudung@email.com",
+        "address":  "550 Điện Biên Phủ, Q.5, TP.HCM"
+    },
+    {
+        "id":  6,
+        "name":  "Hoàng Đức Khoa",
+        "phone":  "0990065537",
+        "group_id":  3,
+        "email":  "hoangdứckhoa@gmail.com",
+        "address":  "881 Lê Lợi, Q.1, TP.HCM"
+    },
+    {
+        "id":  7,
+        "name":  "Võ Thị Quân",
+        "phone":  "0939767846",
+        "group_id":  1,
+        "email":  "vothiquan@email.com",
+        "address":  "616 Nguyễn Huệ, Q.5, Hà Nội"
+    },
+    {
+        "id":  8,
+        "name":  "Hoàng Hoàng An",
+        "phone":  "0960908046",
+        "group_id":  null,
+        "email":  "hoanghoangan@gmail.com",
+        "address":  "187 Trần Hưng Đạo, Q.5, Hà Nội"
+    },
+    {
+        "id":  9,
+        "name":  "Bùi Thanh Dũng",
+        "phone":  "0942663779",
+        "group_id":  2,
+        "email":  "buithanhdung@email.com",
+        "address":  "830 Lê Lợi, Q.10, Đà Nẵng"
+    },
+    {
+        "id":  10,
+        "name":  "Bùi Văn Cường",
+        "phone":  "0974356330",
+        "group_id":  1,
+        "email":  "buivancuờng@yahoo.com",
+        "address":  "487 Trần Hưng Đạo, Q.1, Hà Nội"
+    },
+    {
+        "id":  11,
+        "name":  "Võ Thanh Quân",
+        "phone":  "0958208946",
+        "group_id":  null,
+        "email":  "vothanhquan@email.com",
+        "address":  "702 Hai Bà Trưng, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  12,
+        "name":  "Nguyễn Đức Bình",
+        "phone":  "0961990159",
+        "group_id":  4,
+        "email":  "nguyễndứcbinh@email.com",
+        "address":  "585 Lê Lợi, Q.3, Hà Nội"
+    },
+    {
+        "id":  13,
+        "name":  "Hoàng Văn Thu",
+        "phone":  "0914373025",
+        "group_id":  1,
+        "email":  "hoangvanthu@gmail.com",
+        "address":  "394 Nguyễn Huệ, Q.1, TP.HCM"
+    },
+    {
+        "id":  14,
+        "name":  "Lê Thị Giang",
+        "phone":  "0922678381",
+        "group_id":  3,
+        "email":  "lethigiang@gmail.com",
+        "address":  "300 Điện Biên Phủ, Q.Bình Thạnh, TP.HCM"
+    },
+    {
+        "id":  15,
+        "name":  "Võ Minh An",
+        "phone":  "0946223791",
+        "group_id":  1,
+        "email":  "vominhan@gmail.com",
+        "address":  "938 Lê Lợi, Q.Bình Thạnh, TP.HCM"
+    },
+    {
+        "id":  16,
+        "name":  "Vũ Văn Bình",
+        "phone":  "0930390106",
+        "group_id":  null,
+        "email":  "vuvanbinh@yahoo.com",
+        "address":  "596 Võ Văn Tần, Q.Bình Thạnh, TP.HCM"
+    },
+    {
+        "id":  17,
+        "name":  "Bùi Thị Cường",
+        "phone":  "0992628064",
+        "group_id":  3,
+        "email":  "buithicuờng@gmail.com",
+        "address":  "475 Lý Thường Kiệt, Q.5, TP.HCM"
+    },
+    {
+        "id":  18,
+        "name":  "Phạm Thanh Hùng",
+        "phone":  "0925890932",
+        "group_id":  1,
+        "email":  "phamthanhhung@yahoo.com",
+        "address":  "478 Hai Bà Trưng, Q.3, TP.HCM"
+    }
+]

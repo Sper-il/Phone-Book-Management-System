@@ -1,0 +1,226 @@
+﻿[
+    {
+        "id":  1,
+        "name":  "Vũ Hoàng Minh",
+        "phone":  "0916051776",
+        "group_id":  2,
+        "email":  "vuhoangminh@email.com",
+        "address":  "216 Điện Biên Phủ, Q.5, Đà Nẵng"
+    },
+    {
+        "id":  2,
+        "name":  "Vũ Văn Lan",
+        "phone":  "0947445967",
+        "group_id":  null,
+        "email":  "vuvanlan@email.com",
+        "address":  "503 Nguyễn Huệ, Q.3, TP.HCM"
+    },
+    {
+        "id":  3,
+        "name":  "Võ Thị Vân",
+        "phone":  "0932971887",
+        "group_id":  1,
+        "email":  "vothivan@yahoo.com",
+        "address":  "886 Hai Bà Trưng, Q.1, Hà Nội"
+    },
+    {
+        "id":  4,
+        "name":  "Vũ Thanh Sơn",
+        "phone":  "0991732523",
+        "group_id":  1,
+        "email":  "vuthanhson@yahoo.com",
+        "address":  "523 Võ Văn Tần, Q.10, Hà Nội"
+    },
+    {
+        "id":  5,
+        "name":  "Nguyễn Đức Hùng",
+        "phone":  "0926971391",
+        "group_id":  2,
+        "email":  "nguyễndứchung@gmail.com",
+        "address":  "914 Lý Thường Kiệt, Q.10, TP.HCM"
+    },
+    {
+        "id":  6,
+        "name":  "Đặng Hoàng Hùng",
+        "phone":  "0940334121",
+        "group_id":  3,
+        "email":  "dặnghoanghung@email.com",
+        "address":  "56 Võ Văn Tần, Q.1, Hà Nội"
+    },
+    {
+        "id":  7,
+        "name":  "Hoàng Văn Phương",
+        "phone":  "0915834339",
+        "group_id":  4,
+        "email":  "hoangvanphuong@email.com",
+        "address":  "268 Lê Duẩn, Q.10, Hà Nội"
+    },
+    {
+        "id":  8,
+        "name":  "Phan Đức Quân",
+        "phone":  "0949854470",
+        "group_id":  1,
+        "email":  "phandứcquan@email.com",
+        "address":  "472 Trần Hưng Đạo, Q.1, TP.HCM"
+    },
+    {
+        "id":  9,
+        "name":  "Trần Thanh Hùng",
+        "phone":  "0967491113",
+        "group_id":  2,
+        "email":  "trầnthanhhung@email.com",
+        "address":  "800 Lý Thường Kiệt, Q.3, Hà Nội"
+    },
+    {
+        "id":  10,
+        "name":  "Lê Thị Dũng",
+        "phone":  "0969275002",
+        "group_id":  null,
+        "email":  "lethidung@gmail.com",
+        "address":  "291 Lê Lợi, Q.3, Đà Nẵng"
+    },
+    {
+        "id":  11,
+        "name":  "Bùi Hoàng Khoa",
+        "phone":  "0991747395",
+        "group_id":  2,
+        "email":  "buihoangkhoa@gmail.com",
+        "address":  "998 Lý Thường Kiệt, Q.5, TP.HCM"
+    },
+    {
+        "id":  12,
+        "name":  "Hoàng Văn Phương",
+        "phone":  "0942072621",
+        "group_id":  2,
+        "email":  "hoangvanphuong@yahoo.com",
+        "address":  "119 Nguyễn Huệ, Q.3, Hà Nội"
+    },
+    {
+        "id":  13,
+        "name":  "Phạm Minh Quân",
+        "phone":  "0943947657",
+        "group_id":  4,
+        "email":  "phamminhquan@email.com",
+        "address":  "393 Nguyễn Huệ, Q.3, Đà Nẵng"
+    },
+    {
+        "id":  14,
+        "name":  "Trần Văn Nga",
+        "phone":  "0994341799",
+        "group_id":  null,
+        "email":  "trầnvannga@email.com",
+        "address":  "199 Trần Hưng Đạo, Q.3, Đà Nẵng"
+    },
+    {
+        "id":  15,
+        "name":  "Trần Thanh Nga",
+        "phone":  "0989584191",
+        "group_id":  3,
+        "email":  "trầnthanhnga@email.com",
+        "address":  "225 Hai Bà Trưng, Q.3, Đà Nẵng"
+    },
+    {
+        "id":  16,
+        "name":  "Nguyễn Đức Minh",
+        "phone":  "0985227073",
+        "group_id":  null,
+        "email":  "nguyễndứcminh@email.com",
+        "address":  "544 Lê Duẩn, Q.5, Hà Nội"
+    },
+    {
+        "id":  17,
+        "name":  "Vũ Hoàng Bình",
+        "phone":  "0912066658",
+        "group_id":  1,
+        "email":  "vuhoangbinh@gmail.com",
+        "address":  "928 Trần Hưng Đạo, Q.Bình Thạnh, Hà Nội"
+    },
+    {
+        "id":  18,
+        "name":  "Vũ Văn Minh",
+        "phone":  "0961226488",
+        "group_id":  1,
+        "email":  "vuvanminh@yahoo.com",
+        "address":  "578 Hai Bà Trưng, Q.Bình Thạnh, TP.HCM"
+    },
+    {
+        "id":  19,
+        "name":  "Hoàng Thanh Phương",
+        "phone":  "0953467188",
+        "group_id":  1,
+        "email":  "hoangthanhphuong@yahoo.com",
+        "address":  "269 Lý Thường Kiệt, Q.10, TP.HCM"
+    },
+    {
+        "id":  20,
+        "name":  "Phạm Thị Vân",
+        "phone":  "0992080367",
+        "group_id":  null,
+        "email":  "phamthivan@gmail.com",
+        "address":  "96 Điện Biên Phủ, Q.Bình Thạnh, Hà Nội"
+    },
+    {
+        "id":  21,
+        "name":  "Trần Thị Lan",
+        "phone":  "0986289788",
+        "group_id":  4,
+        "email":  "trầnthilan@gmail.com",
+        "address":  "144 Võ Văn Tần, Q.10, TP.HCM"
+    },
+    {
+        "id":  22,
+        "name":  "Võ Văn Bình",
+        "phone":  "0964881210",
+        "group_id":  2,
+        "email":  "vovanbinh@yahoo.com",
+        "address":  "467 Lê Duẩn, Q.10, TP.HCM"
+    },
+    {
+        "id":  23,
+        "name":  "Vũ Hoàng Nga",
+        "phone":  "0929352741",
+        "group_id":  1,
+        "email":  "vuhoangnga@gmail.com",
+        "address":  "244 Trần Hưng Đạo, Q.Bình Thạnh, Đà Nẵng"
+    },
+    {
+        "id":  24,
+        "name":  "Bùi Hoàng Bình",
+        "phone":  "0922847906",
+        "group_id":  1,
+        "email":  "buihoangbinh@gmail.com",
+        "address":  "650 Nguyễn Huệ, Q.5, TP.HCM"
+    },
+    {
+        "id":  25,
+        "name":  "Trần Đức Khoa",
+        "phone":  "0976097979",
+        "group_id":  null,
+        "email":  "trầndứckhoa@yahoo.com",
+        "address":  "587 Trần Hưng Đạo, Q.1, Đà Nẵng"
+    },
+    {
+        "id":  26,
+        "name":  "Trần Thu Bình",
+        "phone":  "0984474614",
+        "group_id":  1,
+        "email":  "trầnthubinh@email.com",
+        "address":  "671 Điện Biên Phủ, Q.10, Hà Nội"
+    },
+    {
+        "id":  27,
+        "name":  "Lê Đức Dũng",
+        "phone":  "0987940786",
+        "group_id":  4,
+        "email":  "ledứcdung@email.com",
+        "address":  "575 Lý Thường Kiệt, Q.10, Đà Nẵng"
+    },
+    {
+        "id":  28,
+        "name":  "Hoàng Văn Vân",
+        "phone":  "0917102485",
+        "group_id":  null,
+        "email":  "hoangvanvan@gmail.com",
+        "address":  "711 Lê Lợi, Q.5, TP.HCM"
+    }
+]

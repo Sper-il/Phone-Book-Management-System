@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Groups - Phone Book Management</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#136dec',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .group-card {
+            transition: all 0.2s;
+        }
+        .group-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(19, 109, 236, 0.15);
+        }
+        /* Toast styles */
+        .toast {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        /* Confirm dialog styles */
+        .confirm-dialog {
+            animation: fadeIn 0.2s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Toast Container -->
+    <div id="toast-container" class="fixed top-4 right-4 z-[100] space-y-2"></div>
+    
+    <!-- Confirm Dialog -->
+    <div id="confirm-dialog" class="hidden fixed inset-0 bg-black/50 z-[100] flex items-center justify-center p-4">
+        <div class="confirm-dialog bg-white rounded-xl shadow-2xl max-w-md w-full p-6">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+                    <span class="material-symbols-outlined text-red-600">warning</span>
+                </div>
+                <h3 id="confirm-title" class="text-lg font-semibold text-gray-900">Confirm</h3>
+            </div>
+            <p id="confirm-message" class="text-gray-600 mb-6">Are you sure?</p>
+            <div class="flex justify-end gap-3">
+                <button onclick="hideConfirm(false)" class="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 font-medium text-gray-700">Cancel</button>
+                <button onclick="hideConfirm(true)" class="px-4 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <span class="material-symbols-outlined text-primary text-3xl">folder</span>
+                    <div>
+                        <h1 class="text-xl font-bold text-gray-900">Admin Groups</h1>
+                        <p class="text-xs text-gray-500">Manage contact groups</p>
+                    </div>
+                </div>
+                
+                <div class="flex items-center space-x-3">
+                    <a href="/admin/dashboard" class="inline-flex items-center px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined text-xl mr-2">dashboard</span>
+                        User Management
+                    </a>
+                    <a href="/admin/contacts" class="inline-flex items-center px-4 py-2 bg-blue-100 hover:bg-blue-200 text-blue-700 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined text-xl mr-2">contacts</span>
+                        My Contacts
+                    </a>
+                    <a href="/logout" class="inline-flex items-center px-4 py-2 bg-red-100 hover:bg-red-200 text-red-700 rounded-lg transition-colors">
+                        <span class="material-symbols-outlined text-xl mr-2">logout</span>
+                        Logout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Actions Bar -->
+        <div class="mb-6 flex items-center justify-between">
+            <div class="flex items-center space-x-4">
+                <!-- Search -->
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="search-input"
+                        placeholder="Search groups..."
+                        class="w-80 pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        onkeyup="searchGroups()"
+                    >
+                    <span class="material-symbols-outlined absolute left-3 top-2.5 text-gray-400">search</span>
+                </div>
+                
+                <!-- Stats -->
+                <div class="px-4 py-2 bg-white rounded-lg border border-gray-200">
+                    <span class="text-sm text-gray-600">Total Groups: </span>
+                    <span id="total-groups" class="text-sm font-bold text-gray-900">0</span>
+                </div>
+            </div>
+
+            <button 
+                onclick="openAddModal()"
+                class="inline-flex items-center px-4 py-2 bg-primary hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+            >
+                <span class="material-symbols-outlined mr-2">add</span>
+                Create Group
+            </button>
+        </div>
+
+        <!-- Groups Grid -->
+        <div id="groups-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Groups will be loaded here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden text-center py-16">
+            <span class="material-symbols-outlined text-gray-300 text-6xl">folder_off</span>
+            <p class="mt-4 text-lg font-medium text-gray-900">No groups yet</p>
+            <p class="text-sm text-gray-500 mt-1">Create your first group to organize contacts</p>
+            <button 
+                onclick="openAddModal()"
+                class="mt-6 inline-flex items-center px-6 py-3 bg-primary hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+            >
+                <span class="material-symbols-outlined mr-2">add</span>
+                Create Group
+            </button>
+        </div>
+    </main>
+
+    <!-- Add/Edit Modal -->
+    <div id="group-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-lg w-full">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 id="modal-title" class="text-lg font-bold text-gray-900">Create Group</h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-gray-600">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <form id="group-form" class="px-6 py-4" onsubmit="handleSubmit(event)">
+                <input type="hidden" id="group-id">
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Group Name *</label>
+                        <input 
+                            type="text" 
+                            id="group-name" 
+                            required 
+                            placeholder="e.g. Family, Work, Friends"
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        >
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Description</label>
+                        <textarea 
+                            id="group-description" 
+                            rows="3" 
+                            placeholder="Brief description of this group..."
+                            class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none"
+                        ></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold text-gray-700 mb-2">Color Tag</label>
+                        <div class="flex items-center space-x-2">
+                            <input 
+                                type="color" 
+                                id="group-color" 
+                                value="#136dec"
+                                class="w-12 h-10 rounded cursor-pointer border border-gray-300"
+                            >
+                            <span class="text-sm text-gray-600">Choose a color for this group</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 flex justify-end space-x-3">
+                    <button 
+                        type="button" 
+                        onclick="closeModal()" 
+                        class="px-6 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg transition-colors font-medium"
+                    >
+                        Cancel
+                    </button>
+                    <button 
+                        type="submit" 
+                        class="px-6 py-2 bg-primary hover:bg-blue-700 text-white rounded-lg transition-colors font-medium"
+                    >
+                        <span id="submit-text">Create Group</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- View Group Details Modal -->
+    <div id="details-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+            <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                <h3 id="details-title" class="text-lg font-bold text-gray-900">Group Details</h3>
+                <button onclick="closeDetailsModal()" class="text-gray-400 hover:text-gray-600">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+            <div id="details-content" class="px-6 py-4">
+                <!-- Details will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let groups = [];
+        let confirmCallback = null;
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            const bgColor = type === 'success' ? 'bg-green-600' : type === 'error' ? 'bg-red-600' : 'bg-blue-600';
+            const icon = type === 'success' ? 'check_circle' : type === 'error' ? 'error' : 'info';
+            
+            toast.className = `toast flex items-center gap-3 px-5 py-4 rounded-xl shadow-2xl text-white ${bgColor}`;
+            toast.innerHTML = `
+                <span class="material-symbols-outlined">${icon}</span>
+                <span class="font-medium">${message}</span>
+            `;
+            container.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease-out reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Confirm dialog function
+        function showConfirm(title, message) {
+            return new Promise((resolve) => {
+                document.getElementById('confirm-title').textContent = title;
+                document.getElementById('confirm-message').textContent = message;
+                document.getElementById('confirm-dialog').classList.remove('hidden');
+                confirmCallback = resolve;
+            });
+        }
+
+        function hideConfirm(result) {
+            document.getElementById('confirm-dialog').classList.add('hidden');
+            if (confirmCallback) confirmCallback(result);
+        }
+
+        // Load groups
+        async function loadGroups() {
+            try {
+                const response = await fetch('/admin/api/groups');
+                const data = await response.json();
+                groups = (data.success && data.groups) ? data.groups : [];
+                renderGroups(groups);
+            } catch (error) {
+                console.error('Error loading groups:', error);
+                groups = [];
+                renderGroups(groups);
+            }
+        }
+
+        // Render groups
+        function renderGroups(groupsList) {
+            const container = document.getElementById('groups-container');
+            const emptyState = document.getElementById('empty-state');
+            const totalGroups = document.getElementById('total-groups');
+            
+            totalGroups.textContent = groupsList.length;
+            
+            if (groupsList.length === 0) {
+                container.innerHTML = '';
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            
+            emptyState.classList.add('hidden');
+            
+            container.innerHTML = groupsList.map(group => `
+                <div class="group-card bg-white rounded-xl border border-gray-200 overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: ${group.color || '#136dec'}20">
+                                    <span class="material-symbols-outlined text-2xl" style="color: ${group.color || '#136dec'}">folder</span>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-gray-900 text-lg">${group.name}</h3>
+                                    <p class="text-sm text-gray-500">${group.contact_count || 0} contacts</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center space-x-1">
+                                <button 
+                                    onclick="deleteGroup(${group.id}, '${group.name}')"
+                                    class="p-2 hover:bg-red-50 rounded-lg transition-colors"
+                                    title="Delete"
+                                >
+                                    <span class="material-symbols-outlined text-red-600">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        ${group.description ? `
+                        <p class="text-sm text-gray-600 mb-4">${group.description}</p>
+                        ` : ''}
+                        <button 
+                            onclick="viewGroupDetails(${group.id})"
+                            class="w-full py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 rounded-lg transition-colors text-sm font-medium"
+                        >
+                            View Contacts
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Search groups
+        function searchGroups() {
+            const keyword = document.getElementById('search-input').value.toLowerCase();
+            const filtered = groups.filter(g => 
+                g.name.toLowerCase().includes(keyword) || 
+                (g.description && g.description.toLowerCase().includes(keyword))
+            );
+            renderGroups(filtered);
+        }
+
+        // Open add modal
+        function openAddModal() {
+            document.getElementById('modal-title').textContent = 'Create Group';
+            document.getElementById('submit-text').textContent = 'Create Group';
+            document.getElementById('group-form').reset();
+            document.getElementById('group-id').value = '';
+            document.getElementById('group-color').value = '#136dec';
+            document.getElementById('group-modal').classList.remove('hidden');
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('group-modal').classList.add('hidden');
+        }
+
+        // Handle form submit
+        async function handleSubmit(event) {
+            event.preventDefault();
+            
+            const id = document.getElementById('group-id').value;
+            const name = document.getElementById('group-name').value.trim();
+            const description = document.getElementById('group-description').value.trim();
+            const color = document.getElementById('group-color').value;
+            
+            const groupData = { name, description, color };
+            if (id) groupData.id = parseInt(id);
+            
+            try {
+                const response = await fetch('/admin/api/groups', {
+                    method: id ? 'PUT' : 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(groupData)
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    closeModal();
+                    loadGroups();
+                    showToast(result.message, 'success');
+                } else {
+                    showToast(result.message || 'Failed to save group', 'error');
+                }
+            } catch (error) {
+                console.error('Error saving group:', error);
+                showToast('An error occurred while saving the group', 'error');
+            }
+        }
+
+        // Delete group
+        async function deleteGroup(id, name) {
+            const confirmed = await showConfirm('Delete Group', `Are you sure you want to delete group "${name}"? This action cannot be undone.`);
+            if (!confirmed) return;
+            
+            try {
+                const response = await fetch(`/admin/api/groups/${id}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    loadGroups();
+                    showToast(result.message, 'success');
+                } else {
+                    showToast(result.message || 'Failed to delete group', 'error');
+                }
+            } catch (error) {
+                console.error('Error deleting group:', error);
+                showToast('An error occurred while deleting the group', 'error');
+            }
+        }
+
+        // View group details
+        async function viewGroupDetails(id) {
+            const group = groups.find(g => g.id === id);
+            if (!group) return;
+            
+            try {
+                // Fetch contacts in this group
+                const response = await fetch(`/admin/api/groups/${id}/contacts`);
+                const result = await response.json();
+                
+                const contacts = result.contacts || [];
+                
+                document.getElementById('details-title').textContent = group.name;
+                document.getElementById('details-content').innerHTML = `
+                    <div class="mb-6">
+                        <div class="flex items-center space-x-3 mb-4">
+                            <div class="w-12 h-12 rounded-lg flex items-center justify-center" style="background-color: ${group.color || '#136dec'}20">
+                                <span class="material-symbols-outlined text-2xl" style="color: ${group.color || '#136dec'}">folder</span>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-gray-900 text-lg">${group.name}</h3>
+                                <p class="text-sm text-gray-500">${contacts.length} contacts</p>
+                            </div>
+                        </div>
+                        ${group.description ? `<p class="text-sm text-gray-600">${group.description}</p>` : ''}
+                    </div>
+                    
+                    <div class="border-t border-gray-200 pt-4">
+                        <h4 class="font-semibold text-gray-900 mb-3">Contacts in this group</h4>
+                        ${contacts.length === 0 ? `
+                            <div class="text-center py-8">
+                                <span class="material-symbols-outlined text-gray-300 text-4xl">person_off</span>
+                                <p class="text-sm text-gray-500 mt-2">No contacts in this group yet</p>
+                            </div>
+                        ` : `
+                            <div class="space-y-2">
+                                ${contacts.map(c => `
+                                    <div class="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg">
+                                        <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
+                                            <span class="material-symbols-outlined text-primary">person</span>
+                                        </div>
+                                        <div class="flex-1">
+                                            <p class="font-medium text-gray-900">${c.name}</p>
+                                            <p class="text-xs text-gray-500">${c.phone}</p>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `}
+                    </div>
+                `;
+                
+                document.getElementById('details-modal').classList.remove('hidden');
+            } catch (error) {
+                console.error('Error loading group details:', error);
+                showToast('Failed to load group details', 'error');
+            }
+        }
+
+        // Close details modal
+        function closeDetailsModal() {
+            document.getElementById('details-modal').classList.add('hidden');
+        }
+
+        // Load groups on page load
+        loadGroups();
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+  "groups": [
+    {
+      "id": 1,
+      "name": "Family",
+      "description": "Family members and relatives",
+      "color": "#10b981"
+    },
+    {
+      "id": 2,
+      "name": "Work",
+      "description": "Work colleagues and business contacts",
+      "color": "#3b82f6"
+    },
+    {
+      "id": 3,
+      "name": "Friends",
+      "description": "Personal friends and acquaintances",
+      "color": "#f59e0b"
+    },
+    {
+      "id": 4,
+      "name": "IT Staff",
+      "description": "",
+      "color": "#136dec"
+    },
+    {
+      "id": 5,
+      "name": "Security",
+      "description": "",
+      "color": "#136dec"
+    },
+    {
+      "id": 6,
+      "name": "Support",
+      "description": "",
+      "color": "#136dec"
+    },
+    {
+      "id": 7,
+      "name": "Emergency",
+      "description": "",
+      "color": "#136dec"
+    }
+  ]
+}
