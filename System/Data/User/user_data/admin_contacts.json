@@ -11,5 +11,18 @@
     "avatar": "",
     "created_at": "2026-01-22T16:05:28.076072",
     "updated_at": "2026-01-22T16:05:28.076090"
+  },
+  {
+    "id": 2,
+    "name": "Hoài Tú",
+    "phone": "0786787742",
+    "phone_normalized": "0786787742",
+    "email": "",
+    "address": "",
+    "group": "IT",
+    "notes": "aaaaaa",
+    "avatar": "",
+    "created_at": "2026-01-22T20:49:33.286444",
+    "updated_at": "2026-01-22T20:49:33.286444"
   }
 ]

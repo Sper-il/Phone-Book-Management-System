@@ -425,7 +425,7 @@ if(deleteAllBtn){
     if(!confirmed) return;
 
     try{
-      // Xóa từng contact một
+      // Delete each contact one by one
       const deletePromises = contactsCache.map(contact => 
         fetch('/api/delete', {
           method: 'POST',
@@ -443,7 +443,7 @@ if(deleteAllBtn){
         showToast('All contacts deleted successfully!', 'success');
       } else {
         showToast('Error occurred while deleting some contacts', 'error');
-        // Reload lại để đồng bộ
+        // Reload to sync
         await loadContactsOnce();
         filterAndRender(input.value.trim());
       }

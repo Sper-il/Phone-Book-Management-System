@@ -56,15 +56,6 @@
       "contacts_file": "newtest456_contacts.json"
     },
     {
-      "username": "user007",
-      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
-      "password_plain": "123456",
-      "security_question": "What is your favorite food?",
-      "security_answer": "pho",
-      "created_at": "2025-03-10T08:20:00",
-      "contacts_file": "user007_contacts.json"
-    },
-    {
       "username": "user008",
       "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
       "password_plain": "123456",
@@ -270,6 +261,20 @@
       "security_answer": "avatar",
       "created_at": "2025-07-05T14:00:00",
       "contacts_file": "user030_contacts.json"
+    },
+    {
+      "id": 1,
+      "username": "hoaitu",
+      "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+      "password_plain": "123456",
+      "fullname": "",
+      "email": "",
+      "security_question": "What is your pet's name?",
+      "security_answer": "tuan",
+      "security_answer_hash": "23670cabf30801a3160ef30746eed381ec94c674e9ccbb004916b1465c6ed8df",
+      "created_at": "2026-01-22T20:51:23.223307",
+      "is_active": 1,
+      "contacts_file": "hoaitu_contacts.json"
     }
   ]
 }

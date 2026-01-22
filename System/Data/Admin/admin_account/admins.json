@@ -8,7 +8,7 @@
       "full_name": "System Administrator",
       "role": "superadmin",
       "created_at": "2024-01-01T00:00:00",
-      "last_login": "2026-01-22T16:01:52.742749",
+      "last_login": "2026-01-22T20:48:41.293427",
       "permissions": [
         "view_users",
         "delete_users",
