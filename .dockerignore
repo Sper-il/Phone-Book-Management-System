@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual env
+.venv/
+venv/
+
+# Data & runtime
+System/Data/
+System/logs/
+*.db
+
+# IDE & git
+.vscode/
+.git/
+.gitignore
+
+# Docs & test
+*.pdf
+*.xlsx
+backup_*

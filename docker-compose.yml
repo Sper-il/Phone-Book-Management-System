@@ -1,36 +1,11 @@
 version: "3.9"
 
 services:
-  backend:
-    container_name: phonebook
-    build: ./backend
+  phonebook:
+    build: .
+    container_name: phonebook_app
     ports:
-      - "8000:8000"
-    depends_on:
-      - db
-    environment:
-      DB_HOST: db
-      DB_PORT: 3306
-      DB_NAME: phonebook_db
-      DB_USER: phonebook_user
-      DB_PASSWORD: phonebook_pass
+      - "5000:5000"
     volumes:
-      - ./backend:/app
+      - ./System/Data:/app/Data
     restart: unless-stopped
-
-  db:
-    container_name: phonebook_db
-    image: mysql:8.0
-    ports:
-      - "3307:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: root123
-      MYSQL_DATABASE: phonebook_db
-      MYSQL_USER: phonebook_user
-      MYSQL_PASSWORD: phonebook_pass
-    volumes:
-      - db_data:/var/lib/mysql
-    restart: unless-stopped
-
-volumes:
-  db_data:
