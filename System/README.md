@@ -380,7 +380,7 @@ cd System
 python app.py
 ```
 
-Truy cập: http://127.0.0.1:5501
+Truy cập: http://127.0.0.1:5000
 
 ---
 
